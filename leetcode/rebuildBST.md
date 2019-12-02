@@ -17,3 +17,9 @@ function reConstructBinaryTree(pre, ind) {
 ```
 递归思想, 由上到下
 ```
+```js
+ return reConstructBinaryTree(preLeft, vinLeft) + reConstructBinaryTree(preRight, vinRight) + head;
+```
+```
+一个拼接后序遍历的小技巧
+```

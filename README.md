@@ -10,6 +10,7 @@
 - [树形对象转为数组](./js/treeObj2Ary.md)
 - [使用WeakMap解决深拷贝的循环引用问题](./js/deepClone.md)
 - [探索js私有变量](./js/private.md)
+- [值传递和引用传递的误区](./js/copyObj.md)
 ## handwirte
 - [instanceOf](./js/instanceof.md)
 - [debounce](./js/debounce.md)
@@ -22,5 +23,6 @@
 - [二叉树的中序遍历](./leetcode/94BinaryTreeInorderTraversal.md)
 - [二叉树的后序遍历](./leetcode/145BinaryTreePostorderTraversal.md)
 - [重建二叉树](./leetcode/rebulidBST.md)
+- [镜像二叉树](./leetcode/isSymmetrical.md)
 ## others
 - [从乱码到base64](./others/from-error-code-to-base64.md)
