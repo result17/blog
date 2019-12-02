@@ -22,5 +22,5 @@ export function debounce(fn, deplay, immediate) {
 }
 ```
 ```
-防抖函数常用于鼠标移动，输入框输入，格斗游戏的攻击硬直。修正了this指向问题（不使用apply会指向window）,因为addEventListener会自动传入事件对象，所以增加了args参数。而且事件处理函数可能有返回值，增加了result。
+防抖函数常用于鼠标移动，输入框输入。修正了this指向问题（不使用apply会指向window）,因为addEventListener会自动传入事件对象，所以增加了args参数。而且事件处理函数可能有返回值，增加了result。
 ```
