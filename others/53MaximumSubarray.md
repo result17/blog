@@ -13,3 +13,6 @@ var maxSubArray = function(nums) {
 let arr = [-2,1,-3,4,-1,2,1,-5,4]
 maxSubArray(arr)
 ```
+```
+动态规划思想
+```

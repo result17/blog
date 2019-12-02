@@ -9,7 +9,10 @@
 - [数组转换为树形对象](./js/ary2TreeObj.md)
 - [树形对象转为数组](./js/treeObj2Ary.md)
 - [使用WeakMap解决深拷贝的循环引用问题](./js/deepClone.md)
-## others
-- [从乱码到base64](./others/from-error-code-to-base64.md)
+## handwirter
+- [instanceOf](./js/instanceof.md)
+- [debounce](./js/debounce.md)
 ## leetcode
 - [最大子序和](./leetcode/53MaximumSubarray.md)
+## others
+- [从乱码到base64](./others/from-error-code-to-base64.md)
