@@ -32,3 +32,4 @@
 - [是否为平衡二叉树](./leetcode/isBalancedTree.md)
 ## others
 - [从乱码到base64](./others/from-error-code-to-base64.md)
+- [牛顿法求平方根](./others/newTownSqrt.md)
