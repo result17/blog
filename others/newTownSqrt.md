@@ -20,3 +20,4 @@ function mySqrt(n, e = 0.001) {
   return sqrt
 }
 ```
+以上，我们还可以将牛顿迭代法向三次，四次等更高次推广。
