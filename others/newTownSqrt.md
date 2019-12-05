@@ -13,11 +13,11 @@ x2 = x1 - f(x1) / f'(x1)
 ```js
 function mySqrt(n, e = 0.001) {
   let sqrt = n / 2
-  debugger
-  while (sqrt ** 2 - n > e) {
-    sqrt = sqrt - (sqrt ** 2 - n) / (2 * sqrt) 
+  let m = sqrt ** 2 - n
+  while (m - n > e) {
+    sqrt = sqrt - (m / 2 * sqrt) 
   }
   return sqrt
-}
+}zhun
 ```
 以上，我们还可以将牛顿迭代法向三次，四次等更高次推广。

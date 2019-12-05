@@ -30,6 +30,10 @@
 - [二叉树的最大深度](./leetcode/biggerDepthInBT.md)
 - [二叉树的最小深度](./leetcode/smallestDepthInBT.md)
 - [是否为平衡二叉树](./leetcode/isBalancedTree.md)
+- [二叉树中和为某一值的路径](./leetcode/113pathSumII.md)
+- [最长无重复字符字串](./leetcode/3longestSubstringWithoutRepeatingCharacters.md)
+## react
+- [the note of reactjs-interview-questions](./react/reactjs-interview-questions.md)
 ## others
 - [从乱码到base64](./others/from-error-code-to-base64.md)
 - [牛顿法求平方根](./others/newTownSqrt.md)
