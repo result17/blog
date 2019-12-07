@@ -1,6 +1,17 @@
-```
+## 更新
+在stack overflow有一个更好的讨论
+https://stackoverflow.com/questions/518000/is-javascript-a-pass-by-reference-or-pass-by-value-language
+
+## 结论
+In practical terms, this means that if you change the parameter itself (as with num and obj2), 
+that won't affect the item that was fed into the parameter. 
+But if you change the INTERNALS of the parameter, that will propagate back up (as with obj1).
+
+如果，你直接改变参数自身，是不会影响函数外面的变量，如果改变参数内的属性，是会影响参数。
+
+## 误区
 原来，一直以来自己对值传递和引用传递的理解是错误的。先来一道题吧！
-```
+
 ```js
 let obj = {}
 function f(o) {
