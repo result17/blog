@@ -11,6 +11,7 @@
 - [使用WeakMap解决深拷贝的循环引用问题](./js/deepClone.md)
 - [探索js私有变量](./js/private.md)
 - [值传递和引用传递的误区](./js/copyObj.md)
+- [实现sleep函数](./js/sleep.md)
 ## handwirte
 - [instanceOf](./js/instanceof.md)
 - [debounce](./js/debounce.md)
@@ -34,6 +35,9 @@
 - [最长无重复字符字串](./leetcode/3longestSubstringWithoutRepeatingCharacters.md)
 ## react
 - [the note of reactjs-interview-questions](./react/reactjs-interview-questions.md)
+- [React开发相关库](./react/reactLibs.md)
+## node
+- [node的事件循环](./node/eventloop.md)
 ## others
 - [从乱码到base64](./others/from-error-code-to-base64.md)
 - [牛顿法求平方根](./others/newTownSqrt.md)
