@@ -35,9 +35,12 @@
 - [最长无重复字符字串](./leetcode/3longestSubstringWithoutRepeatingCharacters.md)
 ## react
 - [the note of reactjs-interview-questions](./react/reactjs-interview-questions.md)
-- [React开发相关库](./react/reactLibs.md)
+- [react开发相关库](./react/reactLibs.md)
+- [react生命周期](./react/liftCycle.md)
 ## node
 - [node的事件循环](./node/eventloop.md)
+## css
+- [the note of css](./css/cssNote.md)
 ## others
 - [从乱码到base64](./others/from-error-code-to-base64.md)
 - [牛顿法求平方根](./others/newTownSqrt.md)
