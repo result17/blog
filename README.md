@@ -15,6 +15,9 @@
 - [两种方法实现懒加载](./js/lazyLoad.md)
 - [原型链总结](./js/prototype.md)
 - [寄生组合继承](./js/superType.md)
+- [cookie](./js/cookie.md)
+- [enCodeURI和encodeURIComponent的区别](./js/enCodeURI.md)
+- [对token的理解](./js/token.md)
 ## handwirte
 - [instanceOf](./js/instanceof.md)
 - [debounce](./js/debounce.md)
