@@ -3,7 +3,7 @@ function deepClone(target, map = new WeakMap()) {
   let typeCheck = (tar) => Object.prototype.toString.call(tar), res
   if (typeCheck(target) === '[object Object]') {
     res = {}
-  } else if (typeCheck(target) === '[object Object]') {
+  } else if (typeCheck(target) === '[object Array]') {
     res = []
   } else {
     // 引用类型只考虑数组和对象，其他如函数暂不考虑

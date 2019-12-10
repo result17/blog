@@ -12,6 +12,8 @@
 - [探索js私有变量](./js/private.md)
 - [值传递和引用传递的误区](./js/copyObj.md)
 - [实现sleep函数](./js/sleep.md)
+- [两种方法实现懒加载](./js/lazyLoad.md)
+- [原型链总结](./js/prototype.md)
 ## handwirte
 - [instanceOf](./js/instanceof.md)
 - [debounce](./js/debounce.md)
