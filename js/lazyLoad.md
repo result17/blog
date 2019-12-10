@@ -44,3 +44,27 @@ lazyLoad()
 window.addEventListener('scroll', _.throttle(lazyLoad, 1000))
 ```
 chrome可以支持类数组对象直接使用forEach
+
+## 更好的实现
+IntersectionObserver API
+```js
+const imgs = document.querySelectorAll('img[data-src]')
+
+const observer = new IntersectionObserver((imgs) => {
+  imgs.forEach((img) => {
+    // intersectionRatio
+    if (img.isIntersecting) {
+      const image = img.target
+      image.src = img.dataset.src
+      image.removeAttribute('data-src')
+      observer.unobserve(image)
+    }
+  })
+})
+observer(imgs)
+```
+最新方案
+```html
+<img src="shanyue.jpg" loading="lazy">
+```
+img标签loading属性可以支持懒加载，但兼容性除了chrome，都不可用。
