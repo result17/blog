@@ -14,6 +14,7 @@
 - [实现sleep函数](./js/sleep.md)
 - [两种方法实现懒加载](./js/lazyLoad.md)
 - [原型链总结](./js/prototype.md)
+- [寄生组合继承](./js/superType.md)
 ## handwirte
 - [instanceOf](./js/instanceof.md)
 - [debounce](./js/debounce.md)
@@ -35,6 +36,7 @@
 - [是否为平衡二叉树](./leetcode/isBalancedTree.md)
 - [二叉树中和为某一值的路径](./leetcode/113pathSumII.md)
 - [最长无重复字符字串](./leetcode/3longestSubstringWithoutRepeatingCharacters.md)
+- [一次遍历删除链表倒数第k个节点](./leetcode/19removeNthNodeFromEndofList.md)
 ## react
 - [the note of reactjs-interview-questions](./react/reactjs-interview-questions.md)
 - [react开发相关库](./react/reactLibs.md)

@@ -68,3 +68,4 @@ observer(imgs)
 <img src="shanyue.jpg" loading="lazy">
 ```
 img标签loading属性可以支持懒加载，但兼容性除了chrome，都不可用。
+因为未加载的image没有宽高（即使预先设定了宽高也无效），当懒加载加载图片时会触发浏览器relayout。对于网页性能不是很好，可以在网站同一以相同图片占位。
