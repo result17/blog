@@ -22,16 +22,16 @@ css实现三种竖排文字方法
 ```
 cursor: not-allowed（禁止） / pointer（手指） text move
 ```
-```
+
 overflow要想使用，必须给父元素指定高度。
-```
-```
-none 默认值。允许浮动元素出现在两侧。
-left 在左侧不允许浮动元素。
-right 在右侧不允许浮动元素。
-both 在左右两侧均不允许浮动元素。
-inherit 从父元素继承 clear 属性的值。
-```
+
+
+- none 默认值。允许浮动元素出现在两侧。
+- left 在左侧不允许浮动元素。
+- right 在右侧不允许浮动元素。
+- both 在左右两侧均不允许浮动元素。
+- inherit 从父元素继承 clear 属性的值。
+
 ```
 a标签的执行顺序
 :link
@@ -97,3 +97,6 @@ p {
   text-align: left;
 }
 ```
+可以通过设定
+padding-top: width/height * 100%;
+保存宽高比
