@@ -62,3 +62,33 @@ class Button extends React.Component {
 但由于context使用频率问题，没有写 super(props, context) 。
 在class fields proposal出台后，这些坑会被慢慢修复。
 但对于super的探索还不于此。
+
+## 个人见解
+class语法，在我理解就是把构造函数的原型对象“包装”成函数（为什么非得包装成函数，自然是使用new操作符）。理由：
+- class的constructor和构造函数的原型对象的construcor都是指向构造函数
+- 在constructor外的所有属性都是挂在构造函数得原型上
+
+## 补充
+对于刚才super()，就是等于调用超类型的构造函数是不完全的描述。当父类的构造函数是原生对象构造函数如Array, Obeject时，JS是不会修改其this属性的。更兼容的写法是
+```js
+function SubType(name) {
+  // super(name)
+  // SuperType.call(this, name)
+  let _this = new SuperType(name)
+  Object.setPrototypeOf(_this, SuperType.prototype)
+  return _this
+}
+```
+```js
+function Car(w) {
+  this.wheels = w
+}
+function Benz(wheel) {
+  let _this = new Car(wheel)
+  // _this.__proto__ = Benz.prototype
+  Object.setPrototypeOf(_this, Benz.prototype)
+  return _this
+}
+var benz = new Benz(4)
+```
+所以super()，相当于构造父类的一个实例，修改实例的__proto__属性，并将实例赋给this。所以this不能在super前使用。

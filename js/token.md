@@ -2,6 +2,36 @@
 token完全由应用管理，所以它可以避开同源策略。
 token可以避免CSRF攻击
 token是无状态，可以在多个服务器间共享。
+## token如何防范CSRF攻击
+首先，来说请吃一般CSRF攻击分为get类型的csrf，还有post类型的csrf最后还有a链接的csrf
+- get类型的csrf
+```js
+ <img src="http://bank.example/withdraw?amount=10000&for=hacker" > 
+```
+- 
+- post类型的csrf
+```js
+ <form action="http://bank.example/withdraw" method=POST>
+    <input type="hidden" name="account" value="xiaoming" />
+    <input type="hidden" name="amount" value="10000" />
+    <input type="hidden" name="for" value="hacker" />
+</form>
+<script> document.forms[0].submit(); </script> 
+```
+当你打开攻击网站，此网站向被攻击网站自动一个表单，相当于模拟用户进行了一次post操作。
+- 链接类型的CSRF
+```js
+  <a href="http://test.com/csrf/withdraw.php?amount=1000&for=hacker" taget="_blank">
+  重磅消息！！
+  <a/>
+```
+由于之前用户登录了信任的网站A，并且保存登录状态，只要用户主动访问上面的这个PHP页面，则表示攻击成功。
+然后是csrf的攻击流程
+- 用户登录bank.com，并在浏览器保留了cookie
+- 攻击网站attack.me用上面所说的三种方式等用户访问bank.com，由于用户有bank.com的cookie，浏览器自动为请求携带token。
+- bank.com接受请求后，确定是用户的cookie，误因为是用户执行请求，
+- attack.me冒充用户执行操作，完成csrf攻击。
+
 ## token有效期
 因为token是cookie上的关键字，所以我们也能对其设置关键字，同时从安全性来说，设置有效期是有必要的。但token有效期过短，带给用户的体验就不好。
 一种方案是服务器保存token，客户端每次请求刷新token的有限期。

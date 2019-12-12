@@ -17,7 +17,7 @@
 - [寄生组合继承](./js/superType.md)
 - [cookie](./js/cookie.md)
 - [enCodeURI和encodeURIComponent的区别](./js/enCodeURI.md)
-- [对token的理解](./js/token.md)
+- [token和csrf](./js/token.md)
 - [react中为什么要写super(props)](./js/superProps.md)
 ## handwirte
 - [instanceOf](./js/instanceof.md)
