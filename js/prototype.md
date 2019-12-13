@@ -3,7 +3,7 @@
 
 但还需要注意一两点
 所有的构造函数的__proto__（es6的正规用法为Object.getPrototypeOf）属性都指向Function.prototype，包括Object和Function。这里就出现一个奇怪的现象，Funtion就有两个属性指向其原型Function.prototype。
-任何函数都有原型这句话是错的，箭头函数不具备原型。但如下代码成立
+任何函数都有原型这句话是错的，箭头函数不具备原型（没有prototype，但有__proto__）。但如下代码成立
 ```js
 let f = () => 1
 Object.getPrototypeOf(f) === Function.prototype

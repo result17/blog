@@ -41,3 +41,14 @@ token一定要搭配HTTPS使用，因为只要在响应过程中，响应被窃�
 ## token的验证
 由于token的验证都是在服务器一则，所以不必使用非对称加密，使用对称加密法则可（因为对称加密算法比非对称加密算法要快几十倍）。而且我们不需要从token解释出加密内容，只要验证token是否为服务器提供的即可（就是判断token是否是伪造的？）
 由此，我们可以选择使用 加密的消息摘要HMAC（Keyed Hash Message Authentication Code）。由服务器提供一个密钥key（可以根据事件，请求内容等等，给响应提供一个特殊key，提高安全系数），再对客户端的请求（如 userID)，生成一个签名，将其返回客户端保存。当下一客户端携带token请求时，服务器再跟key混合再次对请求进行签名，判断此签名与token是否相同，从而选择是否信任客户端。
+## 更安全的token实现
+服务器用特定的密钥为每个用户生成一个特定token（有特定的有效期）,服务器保存一份，然后不再通过Set-Cookie通知客户端保存，而是插值到HTML字符串中。例如
+```html
+<form action="https://report-uri.io/login/auth" method="POST">
+    <input type="hidden" name="csrf_token" value="d82c90fc4a14b01224gde6ddebc23bf0">
+    <input type="email" id="email" name="email">
+    <input type="password" id="password" name="password">
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>
+```
+用户提交表带时也把cstf-token的值提交给服务器，由服务器判断。
