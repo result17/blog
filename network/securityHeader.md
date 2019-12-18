@@ -39,3 +39,4 @@ Content-Security-Policy-Report-Only: policy
 Content-Security-Policy: default-src 'self'; report-uri http://reportcollector.example.com/collector.cgi
 ```
 具体报告格式请参阅[MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP)
+比较遗憾的是其响应头特性较为新，国内各大网站少有设置（掘金除外）。

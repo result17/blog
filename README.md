@@ -1,7 +1,6 @@
 # 关注前端的技术记录博客
 > 总结、提升  欢迎提issue
-目前更新：
-网络安全系列：
+todo（网络和网络安全系列）：
 token 100%
 cookie 100%
 sql注入 0%
@@ -10,7 +9,25 @@ xss 0%
 TLS 10%
 SSH原理 0%
 同源与跨域 0%
-Security Headers 0%
+Security Headers 20%
+http状态码 0%
+从输入g键到浏览器显示内容 0%
+TCP握手和挥手 0%
+websocker 0%
+todo(JS相关):
+深入理解JS异步能力（callback,promise和async await）0%
+proxy使用（immer）0%
+web worker 0%
+web计时（window.performance对象）0%
+函数柯里化 0%
+私有变量实现 0%
+todo（css）：
+css选择器 0%
+盒模型，居中和postion（z-index失效原因） 0%
+sass（继承, 函数，变量）0%
+JS能够获取伪元素吗（”:after”、”:before”、”:first-line”、”:first-letter”、”:selection”、”:backdrop”）？ 0%
+[Document.styleSheets](https://developer.mozilla.org/zh-CN/docs/Web/API/StyleSheetList) 0%
+background-repeat: repeat-x repeat
 ```
 想要查看代码图片可以浏览imgs文件夹
 ```
