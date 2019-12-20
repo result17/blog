@@ -13,7 +13,7 @@ Security Headers 20%
 http状态码 0%
 从输入g键到浏览器显示内容 0%
 TCP握手和挥手 0%
-websocker 0%
+websocket 0%
 todo(JS相关):
 深入理解JS异步能力（callback,promise和async await）0%
 proxy使用（immer）0%
@@ -21,6 +21,7 @@ web worker 0%
 web计时（window.performance对象）0%
 函数柯里化 0%
 私有变量实现 0%
+内存回收及内存泄漏 0%
 todo（css）：
 css选择器 0%
 盒模型，居中和postion（z-index失效原因） 0%
@@ -28,6 +29,9 @@ sass（继承, 函数，变量）0%
 JS能够获取伪元素吗（”:after”、”:before”、”:first-line”、”:first-letter”、”:selection”、”:backdrop”）？ 0%
 [Document.styleSheets](https://developer.mozilla.org/zh-CN/docs/Web/API/StyleSheetList) 0%
 background-repeat: repeat-x repeat
+todo (html):
+html全局属性 0%
+embed标签
 ```
 想要查看代码图片可以浏览imgs文件夹
 ```
@@ -47,6 +51,7 @@ background-repeat: repeat-x repeat
 - [enCodeURI和encodeURIComponent的区别](./js/enCodeURI.md)
 - [token和csrf](./js/token.md)
 - [react中为什么要写super(props)](./js/superProps.md)
+- [内存回收及内存泄漏](./js/memoryControl.md)
 ## handwirte
 - [instanceOf](./js/instanceof.md)
 - [debounce](./js/debounce.md)
@@ -86,4 +91,4 @@ background-repeat: repeat-x repeat
 ## others
 - [从乱码到base64](./others/from-error-code-to-base64.md)
 - [牛顿法求平方根](./others/newTownSqrt.md)
-- [伪元素与HTML元素区别](./others/fakeElement.md)
+- [伪元素与HTML元素区别（未完工）](./others/fakeElement.md)
