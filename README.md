@@ -52,6 +52,9 @@ embed标签
 - [token和csrf](./js/token.md)
 - [react中为什么要写super(props)](./js/superProps.md)
 - [内存回收及内存泄漏](./js/memoryControl.md)
+- [class中的this](./js/thisInClass.md)
+- [static关键字](./js/static.md)
+- [generator](./js/generator.md)
 ## handwirte
 - [instanceOf](./js/instanceof.md)
 - [debounce](./js/debounce.md)
@@ -78,6 +81,7 @@ embed标签
 - [the note of reactjs-interview-questions](./react/reactjs-interview-questions.md)
 - [react开发相关库](./react/reactLibs.md)
 - [react生命周期](./react/liftCycle.md)
+- [hooks的原理](./react/hook.md)
 ## network
 - [通用首部](./network/conmonHeader.md)
 - [前端路由实现原理](./network/fontEndRouter.md)
@@ -88,6 +92,10 @@ embed标签
 - [node的事件循环](./node/eventloop.md)
 ## css
 - [the note of css](./css/cssNote.md)
+## books
+- [深入理解计算机系统](./books/CSAPP.md)
+## liunx
+- [使用linux坑点记录](./linux/useLinux.md)
 ## others
 - [从乱码到base64](./others/from-error-code-to-base64.md)
 - [牛顿法求平方根](./others/newTownSqrt.md)

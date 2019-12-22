@@ -9,7 +9,7 @@
 ![img](https://github.com/result17/blog/blob/master/imgs/sqrt1.jpg?raw=true)
 x2 = x1 - f(x1) / f'(x1)
 由因为(x, f'(x1))也在g(x)函数图像上，所以f'(x1) = 2x，所以x2 = x1 - f(x1) / 2x。
-我们可以看出x2比x1更靠近平方根的位置，所以当我们迭代次数足够多时，x2即是平方根的近似解。
+我们可以看出x2比x1更靠近平方根的位置，所以当我们迭代次数足够多时，x2即是平方根的近似解。（正平常使用可以迭代次数改为7次，已经可以得到合适的近似解）
 ```js
 function mySqrt(n, e = 0.001) {
   let sqrt = n / 2
@@ -18,6 +18,6 @@ function mySqrt(n, e = 0.001) {
     sqrt = sqrt - (m / 2 * sqrt) 
   }
   return sqrt
-}zhun
+}
 ```
 以上，我们还可以将牛顿迭代法向三次，四次等更高次推广。
