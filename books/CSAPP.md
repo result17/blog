@@ -44,7 +44,6 @@ CPU中的寄存器读取一个字节要比从主存读取一个字节的时间�
 ## 文件
 文件就是字节序列。每个I/O（只是I/O）设备都可以看成是文件。系统中的所有输入输出都是通过一小组称为Unix I/O的系统调用函数调用读写文件来实现的。
 
- $$\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}$$
- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
- <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-<!-- <script id="MathJax-script" async src="./tools/text-mml-chtml.js"></script> -->
+ ```math
+\\(x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}\\
+```
