@@ -94,6 +94,7 @@ embed标签
 - [the note of css](./css/cssNote.md)
 ## books
 - [深入理解计算机系统第一章](./books/CSAPPChar1.md)
+- [深入理解计算机系统第二张](./books/CSAPPChar2.md)
 ## liunx
 - [使用linux坑点记录](./linux/useLinux.md)
 ## others
