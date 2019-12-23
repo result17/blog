@@ -43,7 +43,4 @@ CPU中的寄存器读取一个字节要比从主存读取一个字节的时间�
 基本思想是把一个进程虚拟内存的内容存储在磁盘中，然后用主存作为磁盘的高速缓存。
 ## 文件
 文件就是字节序列。每个I/O（只是I/O）设备都可以看成是文件。系统中的所有输入输出都是通过一小组称为Unix I/O的系统调用函数调用读写文件来实现的。
-
- ```math
-\\(x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}\\
-```
+![equation](http://latex.codecogs.com/gif.latex?O_t%3D%5Ctext%20%7B%20Onset%20event%20at%20time%20bin%20%7D%20t)
