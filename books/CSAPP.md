@@ -33,3 +33,18 @@ x86-64是intel自1978年其。以8086微处理器为代表，不断进化的最�
 CPU中的寄存器读取一个字节要比从主存读取一个字节的时间开销小的多（超过100倍，而且差距越来越大）。针对于处理器和主存之间的差异，系统设计者采用了高速缓存存储器（cache memory）。L1和L2高速缓存是用一种叫做静态随机访问存储器（SRAM）实现的。合理利用高速缓存器会将程序的性能提高一个数量级。
 ## 存储层次结构
 ![img](https://github.com/result17/blog/blob/master/imgs/memory.png?raw=true)
+## 进程
+进程是操作系统对一个正在运行的程序的一种抽象。在一个系统上可以同时运行多个进程，而每个进程都好像是在独占第使用硬件。通过处理器在进程间切换来实现多个进程交错执行的机制称为上下文切换。操作系统保持跟进程运行所需的所有状态信息，这种状态称为上下文。从一个进程到另一个进程的切换是由操作系统内核（kernel）管理的。内核是操作系统代码常驻主存的而部分。
+## 线程
+在现代系统中，一个进程实际上可以由多个称为线程的执行单元组成。每个线程都运行在进程的上下文中，并共享同样的代码和全局数据。
+## 虚拟内存
+虚拟内存是一个抽象概念，它为每个进程提供一个假象，即每个进程都在独占的使用主存。每个进程看到的内存都是一致的，称为虚拟地址空间，
+![img](https://github.com/result17/blog/blob/master/imgs/fakeMemory.png?raw=true)
+基本思想是把一个进程虚拟内存的内容存储在磁盘中，然后用主存作为磁盘的高速缓存。
+## 文件
+文件就是字节序列。每个I/O（只是I/O）设备都可以看成是文件。系统中的所有输入输出都是通过一小组称为Unix I/O的系统调用函数调用读写文件来实现的。
+
+ $$\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}$$
+ <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+ <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- <script id="MathJax-script" async src="./tools/text-mml-chtml.js"></script> -->
