@@ -94,10 +94,14 @@ embed标签
 - [the note of css](./css/cssNote.md)
 ## books
 - [深入理解计算机系统第一章](./books/CSAPPChar1.md)
-- [深入理解计算机系统第二张](./books/CSAPPChar2.md)
+- [深入理解计算机系统第二章](./books/CSAPPChar2.md)
 ## liunx
 - [使用linux坑点记录](./linux/useLinux.md)
+## tools
+- [vscode使用坑点](./tools/useVSCode.md)
 ## others
 - [从乱码到base64](./others/from-error-code-to-base64.md)
 - [牛顿法求平方根](./others/newTownSqrt.md)
 - [伪元素与HTML元素区别（未完工）](./others/fakeElement.md)
+- [2**n转16进制小技巧](./others/2ox.md)
+
