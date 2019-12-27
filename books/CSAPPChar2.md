@@ -255,5 +255,40 @@ return strlen(s) > strlen(t)
 15   1     1
 ## 补码加法
 ![img](https://github.com/result17/blog/blob/master/imgs/tAdd.png?raw=true)
+## 阿贝尔群
+转载于
+https://www.zhihu.com/question/20107927/answer/73830322
+abel群是交换群，就是满足运算交换律的群。所有循环群都是abel群。
+设G为一个非空集合，• 是一个自定义的运算符号.群是一个二元运算的代数结构，是近世代数的概念，
+它满足封闭性（存在a，b属于G，a•b也属于G；）
+结合性（存在a，b，c属于G，有a•（b•c）=（a•b）•c；）
+有单位元（存在单位元e属于G，对于任意g属于G，有e•g=g•e=g；）
+有逆元（对于任意g属于G，存在逆元g′，使得g•g′=g′•g=e；）
+
 ## 检查补码加法中的溢出
 ![img](https://github.com/result17/blog/blob/master/imgs/tAddOverFlow.png?raw=true)
+## 练习题2.29
+100101    00101    1
+110000    10000    2
+111111    11111    2
+000111    00111    3
+010000    10000    4
+
+x + y要算术右移一位，再进行截断。
+## 练习题2.30
+查阅csappCode中的tadd_ok.c，在这里给出作者更好的实现。
+```c
+int tadd_ok(int x, int y) {
+  int sum = x + y;
+  int neg_over = x < 0 && y < 0 && sum >= 0;
+  int pos_over = x >= 0 && y >= 0 && sum < 0;
+  return !neg_over && !pos_over;
+}
+```
+正常返回1，不正常返回0。
+## 练习题2.31
+根据阿贝尔群的定义，补码加法会形成一个阿贝尔群，因此表达式(x + y) - x求值得到y，无论加法是否溢出，而(x+y)-y总是会求值得到x。
+## 练习题2.32
+错误处在
+如y = Tmin = 0x80000000, -y也等于0x80000000。（在int中有两个数的相反数也是自身）
+因此函数tadd_ok会认为只要x是负数时，就会溢出。而x为非负数是，不会溢出。实际上，情况相反，当x为负数时，tsub_ok(x, Tmin)为1（正常），而当x为非负时，它为0。
