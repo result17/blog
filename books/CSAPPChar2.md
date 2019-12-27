@@ -190,8 +190,70 @@ C语言标准并没有要求要用补码形式来表示有符号数。有符号�
 -1  1111  F
 0   0000  0
 5   0101  5
-## 有符号数转为无符号数（补码）函数
+## 有符号数（补码）转为无符号数函数
 ![img](https://github.com/result17/blog/blob/master/imgs/U2T.png?raw=true)
-## 无符号数转（补码）转为有符号数
+## 无符号数转转为有符号数（补码）
 ![img](https://github.com/result17/blog/blob/master/imgs/T2U.png?raw=true)
 ![img](https://github.com/result17/blog/blob/master/imgs/T2Uu2T.png?raw=true)
+## 有符号和无符号数运算
+当执行一个运算时，如果一个运算数是有符号的而另一个是无符号的，c语言会隐式地将有符号数强制切换位无符号数。并假设这两个数都是非负，进行运算。但对于<和>有不符合直觉的结果。
+## 练习题2.21
+Tmin32是-2147483648，将它强制类型转换为无符号数后，变成了2147483648.
+无符号  1
+有符号  1
+无符号  0
+有符号  1
+无符号  1
+## 零扩展
+简单地在表示的开头添加0，这种运算被称为零扩展。（逻辑右移）
+## 符号扩展
+在表示中添加最高有效位的值。（算术右移）数学归纳法证明
+## 练习题2.22.
+A -2** (4-1) + 2** 1  +  2** 0
+B -2** (5-1) + 2** 4 + 2** 1 + 2** 0
+C -2** (6 - 1) + 2** 4 + 2** 5 + 2** 1 + 2** 0
+## 转换类型规则
+如short转unsigned(无符号整型int)，我们先要改变大小，之后再完成从有符号到无符号的转换。此规则是C语言标准要求。
+## 练习题2.23
+对无符号数是逻辑右移，对有符号数是算术右移 最高有效位8-F代表，第一个二进制数字位1（符号位），在算术右移时添加的是符号位。
+0x00000076  0x00000076
+0x00000021  0x00000021
+0x000000C9  0xFFFFFFC9
+0x00000087  0xFFFFFF87
+## 截断数字
+![img](https://github.com/result17/blog/blob/master/imgs/truncated.png?raw=true)
+补码截断的公式是根据无符号数截断的推导而来。
+## 练习题2.24
+0        0
+2        2
+1        1
+3        3
+7        -1
+截断后，字长为3。2** k = 2** 3。
+补码截断可以从无符号截断结果，再B2T()，但要记得新字长为截断后的字长。
+## 练习题2.25
+因为参数length是无符号的，计算0-1将使用无符号晕眩，这等价于模数加法。结果得到UMax。小于等于比较同样使用无符号数比较，而因为任何数都是小于或等于Umax的，所以这个比较宗伟真。因此代码将试图访问数字a的非法元素。
+可以把循环条件改为i < length。
+## 练习题2.26
+当s < t时， s - t会得到负数，又因为strlen()是unsigned int，此时s - t会被当做一个很大的实数。
+(int)(strlen(s) - strlen(t)) > 0
+或者
+return strlen(s) > strlen(t)
+## 避免隐式转换
+一个简单粗暴的方法是绝不使用无符号数，并且要求以补码运算来实现。
+## 无符号数加法
+![img](https://github.com/result17/blog/blob/master/imgs/uAdd.png?raw=true)
+## 检查无符号数加法溢出
+![img](https://github.com/result17/blog/blob/master/imgs/uAddOverFlow.png?raw=true)
+## 无符号数求反
+![img](https://github.com/result17/blog/blob/master/imgs/uAddOk.png?raw=true)
+## 练习题2.28
+0    0     0
+5    11    B
+8    8     8
+13   3     3
+15   1     1
+## 补码加法
+![img](https://github.com/result17/blog/blob/master/imgs/tAdd.png?raw=true)
+## 检查补码加法中的溢出
+![img](https://github.com/result17/blog/blob/master/imgs/tAddOverFlow.png?raw=true)
