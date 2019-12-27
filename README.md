@@ -95,6 +95,7 @@ embed标签
 ## books
 - [深入理解计算机系统第一章](./books/CSAPPChar1.md)
 - [深入理解计算机系统第二章](./books/CSAPPChar2.md)
+- [python学习笔记(雨痕3rd)的简记](./books/pyNote.md)
 ## liunx
 - [使用linux坑点记录](./linux/useLinux.md)
 ## tools

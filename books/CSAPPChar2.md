@@ -292,3 +292,47 @@ int tadd_ok(int x, int y) {
 错误处在
 如y = Tmin = 0x80000000, -y也等于0x80000000。（在int中有两个数的相反数也是自身）
 因此函数tadd_ok会认为只要x是负数时，就会溢出。而x为非负数是，不会溢出。实际上，情况相反，当x为负数时，tsub_ok(x, Tmin)为1（正常），而当x为非负时，它为0。
+## 补码的非
+![img](https://github.com/result17/blog/blob/master/imgs/tNeg.png?raw=true)
+特别地，在补码，有两个数字的逆元是它自身：Tmin和0。
+## 练习题2.33
+0        0        0
+5        -5       B
+-8       -8       8
+-3       3        3
+-1       1        1
+
+补码转十进制要记住负权那一套定义方法。
+## 原码，反码
+原码 最高位为符号位，0为整数，1为负数
+反码 在原码基础上，保持符号位，其余位取反
+补码 在反码上最低位 + 1
+## 求补码的非简便方法
+对每一位求补，再对结果加1。在c语言中，我们可以说，对于任意整数值x，计算表达式-x和~x+1得到的结果完全一样。
+## 无符号数乘法
+![img](https://github.com/result17/blog/blob/master/imgs/uT.png?raw=true)
+## 补码乘法
+![img](https://github.com/result17/blog/blob/master/imgs/tT.png?raw=true)
+## 练习题2.34
+[010100] [100]
+[001100] [100]
+[001110] [110]
+[111110] [110]
+[010100] [100]
+[000100] [100]
+## 练习题2.35
+见书本答案
+## 练习题2.36
+使用64位表示，乘法就不会溢出。
+## 练习题2.37
+A.此改动完全没帮助，因为调用malloc会导致这个值被转换成一个32位无符号数字，因此还会溢出。
+B.malloc使用一个32位无符号数作为参数，它不可能分配一个大于2**32个字节的块。当参数超过 2 **32时，应该返回NULL。
+```c
+unint64_t require_size = ele_cnt * (uint64_t) ele_size;
+size_t request_size = (size_t) required_size;
+if (required_size != request_size)
+  return null;
+void *result = malloc(request_size);
+if (result == NULL)
+  return NULL;
+```
