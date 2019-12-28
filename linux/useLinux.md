@@ -5,7 +5,11 @@
 %s/匹配内容/替换内容g
 ```
 ## source list
-每次更换source list后记得执行
+每次更换source list(使用镜像网站)后记得执行
 ```c
 sudo apt-get update; sudo apt-get upgrade
+```
+## 检查ubuntu版本
+```shell
+lsa_release -a
 ```

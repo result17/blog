@@ -105,4 +105,5 @@ embed标签
 - [牛顿法求平方根](./others/newTownSqrt.md)
 - [伪元素与HTML元素区别（未完工）](./others/fakeElement.md)
 - [2**n转16进制小技巧](./others/2ox.md)
+- [chrome黑屏修复](./others/fixChromeBlackScreen.md)
 
