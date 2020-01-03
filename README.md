@@ -96,6 +96,7 @@ embed标签
 - [深入理解计算机系统第一章](./books/CSAPPChar1.md)
 - [深入理解计算机系统第二章](./books/CSAPPChar2.md)
 - [python学习笔记(雨痕3rd)的简记](./books/pyNote.md)
+- [深入理解typescript](./books/typescript.md)
 ## liunx
 - [使用linux坑点记录](./linux/useLinux.md)
 ## tools
@@ -106,4 +107,4 @@ embed标签
 - [伪元素与HTML元素区别（未完工）](./others/fakeElement.md)
 - [2**n转16进制小技巧](./others/2ox.md)
 - [chrome黑屏修复](./others/fixChromeBlackScreen.md)
-
+- [chrome不能使用的端口](./others/errorPorts.md)
