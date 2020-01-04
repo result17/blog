@@ -97,6 +97,7 @@ embed标签
 - [深入理解计算机系统第二章](./books/CSAPPChar2.md)
 - [python学习笔记(雨痕3rd)的简记](./books/pyNote.md)
 - [深入理解typescript](./books/typescript.md)
+- [深入浅出 Webpack](./books/webpack.md)
 ## liunx
 - [使用linux坑点记录](./linux/useLinux.md)
 ## tools
