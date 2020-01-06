@@ -689,3 +689,346 @@ module.exports = [
   }
 ]
 ```
+## es6转换es5
+通常我们需要把采用 ES6 编写的代码转换成目前已经支持良好的 ES5 代码，这包含2件事：
+
+- 把新的 ES6 语法用 ES5 实现，例如 ES6 的 class 语法用 ES5 的 prototype 实现。
+- 给新的 API 注入 polyfill ，例如项目使用 fetch API 时，只有注入对应的 polyfill 后，才能在低版本浏览器中正常运行。
+## Babel
+在 Babel 执行编译的过程中，会从项目根目录下的 .babelrc 文件读取配置。.babelrc 是一个 JSON 格式的文件，内容大致如下：
+```js
+{
+  "plugins": [
+    [
+      "transform-runtime",
+      {
+        "polyfill": false
+      }
+    ]
+   ],
+  "presets": [
+    [
+      "es2015",
+      {
+        "modules": false
+      }
+    ],
+    "stage-2",
+    "react"
+  ]
+}
+```
+## babel Plugins
+plugins 属性告诉 Babel 要使用哪些插件，插件可以控制如何转换代码。
+
+以上配置文件里的 transform-runtime 对应的插件全名叫做 babel-plugin-transform-runtime，即在前面加上了 babel-plugin-，要让 Babel 正常运行我们必须先安装它：
+```js
+npm i -D babel-plugin-transform-runtime
+```
+babel-plugin-transform-runtime 是 Babel 官方提供的一个插件，作用是减少冗余代码。
+## webpack中使用typescript
+- 减少代码冗余
+在把 ES6 语法转换成 ES5 语法时需要注入辅助函数， 为了不让同样的辅助函数重复的出现在多个文件中，可以开启 TypeScript 编译器的 importHelpers 选项，修改 tsconfig.json 文件如下：
+```js
+{
+  "compilerOptions": {
+    "importHelpers": true
+  }
+}
+```
+该选项的原理和 Babel 中介绍的 babel-plugin-transform-runtime 非常类似，会把辅助函数换成如下导入语句：
+```js
+var _tslib = require('tslib');
+_tslib._extend(target);
+```
+该选项的原理和 Babel 中介绍的 babel-plugin-transform-runtime 非常类似，会把辅助函数换成如下导入语句
+```js
+var _tslib = require('tslib');
+_tslib._extend(target);
+```
+这会导致编译出的代码依赖 tslib 这个迷你库，但避免了代码冗余。
+## webpack使用ts中相关设置
+要让 Webpack 支持 TypeScript，需要解决以下2个问题：
+- 通过 Loader 把 TypeScript 转换成 JavaScript。
+- Webpack 在寻找模块对应的文件时需要尝试 ts 后缀。
+推荐使用awesome-typescript-loader
+```js
+npm i -D typescript awesome-typescript-loader
+```
+```js
+const path = require('path');
+
+module.exports = {
+  // 执行入口文件
+  entry: './main',
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, './dist'),
+  },
+  resolve: {
+    // 先尝试 ts 后缀的 TypeScript 源码文件
+    extensions: ['.ts', '.js'] 
+  },
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        loader: 'awesome-typescript-loader'
+      }
+    ]
+  },
+  devtool: 'source-map',// 输出 Source Map 方便在浏览器里调试 TypeScript 代码
+};
+```
+## webpack使用scss
+使用 SCSS 可以提升编码效率，但是必须把 SCSS 源代码编译成可以直接在浏览器环境下运行的 CSS 代码。 SCSS 官方提供了多种语言实现的编译器，由于本书更倾向于前端工程师使用的技术栈，所以主要来介绍下 node-sass。
+
+node-sass 核心模块是由 C++ 编写，再用 Node.js 封装了一层，以供给其它 Node.js 调用。 node-sass 还支持通过命令行调用，先安装它到全局：
+```js
+npm i -g node-sass
+```
+使用
+```js
+# 把 main.scss 源文件编译成 main.css
+node-sass main.scss main.css
+```
+```js
+module.exports = {
+  module: {
+    rules: [
+      {
+        // 增加对 SCSS 文件的支持
+        test: /\.scss$/,
+        // SCSS 文件的处理顺序为先 sass-loader 再 css-loader 再 style-loader
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+    ]
+  },
+};
+```
+```js
+# 安装 Webpack Loader 依赖
+npm i -D  sass-loader css-loader style-loader
+# sass-loader 依赖 node-sass
+npm i -D node-sass
+```
+## 在babel项目中使用react
+```js
+# 安装 React 基础依赖
+npm i -D react react-dom
+# 安装 babel 完成语法转换所需依赖
+npm i -D babel-preset-react
+```
+修改 .babelrc 配置文件加入 React Presets
+```js
+"presets": [
+    "react"
+],
+```
+## 在react中使用ts
+TypeScript 相比于 Babel 的优点在于它原生支持 JSX 语法，你不需要重新安装新的依赖，只需修改一行配置。 但 TypeScript 的不同在于：
+
+使用了 JSX 语法的文件后缀必须是 tsx。
+由于 React 不是采用 TypeScript 编写的，需要安装 react 和 react-dom 对应的 TypeScript 接口描述模块 @types/react 和 @types/react-dom 后才能通过编译。
+```js
+{
+  "compilerOptions": {
+    "jsx": "react" // 开启 jsx ，支持 React
+  }
+}
+```
+```js
+const path = require('path');
+
+module.exports = {
+  // TS 执行入口文件
+  entry: './main',
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, './dist'),
+  },
+  resolve: {
+    // 先尝试 ts，tsx 后缀的 TypeScript 源码文件 
+    extensions: ['.ts', '.tsx', '.js',] 
+  },
+  module: {
+    rules: [
+      {
+        // 同时匹配 ts，tsx 后缀的 TypeScript 源码文件 
+        test: /\.tsx?$/,
+        loader: 'awesome-typescript-loader'
+      }
+    ]
+  },
+  devtool: 'source-map',// 输出 Source Map 方便在浏览器里调试 TypeScript 代码
+};
+```
+配置较为复杂，建议使用脚手架create-react-app。
+## 通过node去使用webpack模块
+```js
+const webpack = require('webpack')
+
+webpack({
+  // Webpack 配置，和 webpack.config.js 文件一致
+}, (err, stats) => {
+  if (err || stats.hasErrors()) {
+    // 构建过程出错
+  }
+  // 成功执行完构建
+});
+```
+如果你的 Webpack 配置写在 webpack.config.js 文件中，可以这样使用
+```js
+// 读取 webpack.config.js 文件中的配置
+const config = require('./webpack.config.js');
+webpack(config , callback);
+```
+## 在node通过监听模式运行webpack
+```js
+// 如果不传 callback 回调函数，就会返回一个 Compiler 实例，用于让你去控制启动，而不是像上面那样立即启动
+const compiler = webpack(config);
+
+// 调用 compiler.watch 以监听模式启动，返回的 watching 用于关闭监听
+const watching = compiler.watch({
+  // watchOptions
+  aggregateTimeout: 300,
+},(err, stats)=>{
+  // 每次因文件发生变化而重新执行完构建后
+});
+
+// 调用 watching.close 关闭监听 
+watching.close(()=>{
+  // 在监听关闭后
+});
+```
+## 使用 Webpack Dev Middleware
+ DevServer 是一个方便开发的小型 HTTP 服务器， DevServer 其实是基于 webpack-dev-middleware 和 Expressjs 实现的， 而 webpack-dev-middleware 其实是 Expressjs 的一个中间件。
+ 也就是说，实现 DevServer 基本功能的代码大致如下：
+ ```js
+ const express = require('express');
+const webpack = require('webpack');
+const webpackMiddleware = require('webpack-dev-middleware');
+
+// 从 webpack.config.js 文件中读取 Webpack 配置 
+const config = require('./webpack.config.js');
+// 实例化一个 Expressjs app
+const app = express();
+
+// 用读取到的 Webpack 配置实例化一个 Compiler
+const compiler = webpack(config);
+// 给 app 注册 webpackMiddleware 中间件
+app.use(webpackMiddleware(compiler));
+// 启动 HTTP 服务器，服务器监听在 3000 端口 
+app.listen(3000);
+```
+从以上代码可以看出，从 webpack-dev-middleware 中导出的 webpackMiddleware 是一个函数，该函数需要接收一个 Compiler 实例。
+Webpack API 导出的 webpack 函数会返回一个Compiler 实例。
+webpackMiddleware 函数的返回结果是一个 Expressjs 的中间件，该中间件有以下功能：
+
+- 接收来自 Webpack Compiler 实例输出的文件，但不会把文件输出到硬盘，而是保存在内存中；
+- 往 Expressjs app 上注册路由，拦截 HTTP 收到的请求，根据请求路径响应对应的文件内容；
+## Webpack Dev Middleware 支持的配置项
+```js
+// webpackMiddleware 函数的第二个参数为配置项
+app.use(webpackMiddleware(compiler, {
+    // webpack-dev-middleware 所有支持的配置项
+    // 只有 publicPath 属性为必填，其它都是选填项
+
+    // Webpack 输出资源绑定在 HTTP 服务器上的根目录，
+    // 和 Webpack 配置中的 publicPath 含义一致 
+    publicPath: '/assets/',
+
+    // 不输出 info 类型的日志到控制台，只输出 warn 和 error 类型的日志
+    noInfo: false,
+
+    // 不输出任何类型的日志到控制台
+    quiet: false,
+
+    // 切换到懒惰模式，这意味着不监听文件变化，只会在请求到时再去编译对应的文件，
+    // 这适合页面非常多的项目。
+    lazy: true,
+
+    // watchOptions
+    // 只在非懒惰模式下才有效
+    watchOptions: {
+        aggregateTimeout: 300,
+        poll: true
+    },
+
+    // 默认的 URL 路径, 默认是 'index.html'.
+    index: 'index.html',
+
+    // 自定义 HTTP 头
+    headers: {'X-Custom-Header': 'yes'},
+
+    // 给特定文件后缀的文件添加 HTTP mimeTypes ，作为文件类型映射表
+    mimeTypes: {'text/html': ['phtml']},
+
+    // 统计信息输出样式
+    stats: {
+        colors: true
+    },
+
+    // 自定义输出日志的展示方法
+    reporter: null,
+
+    // 开启或关闭服务端渲染
+    serverSideRender: false,
+}));
+``` 
+## Webpack Dev Middleware 与模块热替换
+DevServer 提供了一个方便的功能，可以做到在监听到文件发生变化时自动替换网页中的老模块，以做到实时预览。 DevServer 虽然是基于 webpack-dev-middleware 实现的，但 webpack-dev-middleware 并没有实现模块热替换功能，而是 DevServer 自己实现了该功能。
+为了在使用 webpack-dev-middleware 时也能使用模块热替换功能去提升开发效率，需要额外的再接入 webpack-hot-middleware。 
+具体用法：https://github.com/webpack-contrib/webpack-hot-middleware
+## 使用 file-loader加载图片
+file-loader 可以把 JavaScript 和 CSS 中导入图片的语句替换成正确的地址，并同时把文件输出到对应的位置
+```css
+#app {
+  background-image: url(./imgs/a.png);
+}
+/* 替换后 */
+#app {
+  background-image: url(./imgs/a.png);
+}
+```
+## 使用url-loader加载图片
+url-loader 可以把文件的内容经过 base64 编码后注入到 JavaScript 或者 CSS 中去。
+```css
+#app {
+  background-image: url(./imgs/a.png);
+}
+/* 替换后 */
+#app {
+  background-image: url(data:image/png;base64,iVBORw01afer...); /* 结尾省略了剩下的 base64 编码后的数据 */
+}
+```
+同理在 JavaScript 中效果也类似。
+
+从上面的例子中可以看出 url-loader 会把根据图片内容计算出的 base64 编码的字符串直接注入到代码中，由于一般的图片数据量巨大， 这会导致 JavaScript、CSS 文件也跟着变大。 所以在使用 url-loader 时一定要注意图片体积不能太大，不然会导致 JavaScript、CSS 文件过大而带来的网页加载缓慢问题。
+
+一般利用 url-loader 把网页需要用到的小图片资源注入到代码中去，以减少加载次数。因为在 HTTP/1 协议中，每加载一个资源都需要建立一次 HTTP 链接， 为了一个很小的图片而新建一次 HTTP 连接是不划算的。
+
+url-loader 考虑到了以上问题，并提供了一个方便的选择 limit，该选项用于控制当文件大小小于 limit 时才使用 url-loader，否则使用 fallback 选项中配置的 loader。 相关 Webpack 配置如下：
+```js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.png$/,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            // 30KB 以下的文件采用 url-loader
+            limit: 1024 * 30,
+            // 否则采用 file-loader，默认值就是 file-loader 
+            fallback: 'file-loader',
+          }
+        }]
+      }
+    ]
+  },
+};
+```
+还可以使用imagemin进行压缩
+## 优化
+待续
