@@ -98,6 +98,8 @@ embed标签
 - [python学习笔记(雨痕3rd)的简记](./books/pyNote.md)
 - [深入理解typescript](./books/typescript.md)
 - [深入浅出 Webpack](./books/webpack.md)
+- [算法第四版第一章](./books/algorithms4rdChar1.md)
+- [深入浅出node](./books/node.md)
 ## liunx
 - [使用linux坑点记录](./linux/useLinux.md)
 ## tools
