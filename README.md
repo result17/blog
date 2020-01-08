@@ -100,6 +100,7 @@ embed标签
 - [深入浅出 Webpack](./books/webpack.md)
 - [算法第四版第一章](./books/algorithms4rdChar1.md)
 - [深入浅出node](./books/node.md)
+- [计算机网络第七版](./books/computerNetwork7st.md)
 ## liunx
 - [使用linux坑点记录](./linux/useLinux.md)
 ## tools
@@ -112,3 +113,4 @@ embed标签
 - [chrome黑屏修复](./others/fixChromeBlackScreen.md)
 - [chrome不能使用的端口](./others/errorPorts.md)
 - [promise问题](./others/promiseProblem.md)
+- [jquery选择器性能](./others/jqSelctorPerforme.md)
