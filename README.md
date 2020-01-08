@@ -109,3 +109,4 @@ embed标签
 - [2**n转16进制小技巧](./others/2ox.md)
 - [chrome黑屏修复](./others/fixChromeBlackScreen.md)
 - [chrome不能使用的端口](./others/errorPorts.md)
+- [promise问题](./others/promiseProblem.md)
