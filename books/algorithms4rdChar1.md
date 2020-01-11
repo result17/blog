@@ -157,3 +157,6 @@ boolean byte char double float int long short 对应 Boolean Byte Character Doub
 还有检查括号是否闭合的操作。
 ## Dijkstra的双栈算术表达式求值算法
 https://github.com/result17/myAlgs4/blob/master/char1/Evaluate.java
+## FixedCapacityStackOfStrings（定容栈）
+https://github.com/result17/myAlgs4/blob/master/char1/FixedCapacityStackOfStrings
+一个规定栈容量的栈，push和pop不会改变容量，只会改变栈顶指针的大小。
