@@ -21,7 +21,7 @@ let promiseAry = urlAry.map((url) => {
 })
 let all = Promise.all(promiseAry)
 ```
-这种方法好吗？又想了一种
+better solution:
 ```js
 let promiseAry = urlAry.map((url) => {
   // getSource是一个Promise对象
@@ -33,4 +33,3 @@ let promiseAry = urlAry.map((url) => {
 })
 let all = Promise.all(promiseAry)
 ```
-哪种更好？你会怎么样处理呢？我觉得最后一种最好

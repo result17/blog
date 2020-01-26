@@ -55,6 +55,7 @@ embed标签
 - [class中的this](./js/thisInClass.md)
 - [static关键字](./js/static.md)
 - [generator](./js/generator.md)
+- [正则](./js/reg.md)
 ## handwirte
 - [instanceOf](./js/instanceof.md)
 - [debounce](./js/debounce.md)
@@ -106,6 +107,9 @@ embed标签
 ## tools
 - [vscode使用坑点](./tools/useVSCode.md)
 - [github使用ssh连接](./tools/sshGithub.md)
+## read
+- [We have a problem with promises](./read/noteAboutPromise.md)
+- [How tracking pixels work](./read/trackPixels.md)
 ## others
 - [从乱码到base64](./others/from-error-code-to-base64.md)
 - [牛顿法求平方根](./others/newTownSqrt.md)
