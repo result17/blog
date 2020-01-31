@@ -1,3 +1,5 @@
+## link
+https://jvns.ca/blog/how-tracking-pixels-work/
 ## track
 几乎每一家网站例如facebook都会追踪网站，给用户推荐广告。不过用户可以听过adblocker来阻止third-party trackers跟踪。
 ## tracking pixels
