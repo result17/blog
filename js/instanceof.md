@@ -1,14 +1,30 @@
+## 简单实现
 ```js
-function instanceof(left, right) {
-  if (typeof left !== 'Object' || left === null) return
-  let prot = Object.getPrototypeOf(left)
-  while (prot !== null) {
-    if (prot === right) return true
-    prot = Object.getPrototypeOf(prot)
-  }
-  return false
+function instance_of(L, R) {//L 表示左边的object，R 表示右边的constructor
+  // if (L === null) return
+  const R_P = R === null ? null : R.prototype;// 取 R 的显式原型
+  L = L.__proto__;// 取 L 的隐式原型,并且可能会顺着原型链重新赋值
+  while (true) { 
+    if (L === null) 
+      return false; 
+    if (R_P === L)// 这里重点：严格比较 true 
+      return true; 
+    L = L.__proto__; 
+  } 
 }
 ```
-```
 需要明确的是，instanceof和typeof一样是运算符。用来检测构造函数的 prototype 属性是否出现在某个实例对象的原型链。判断对象是否为构造函数的实例，可能不准确，因为此函数判断的是Object.getPrototypeOf(sub) === sup.prototype，当两者之一改变，等式不再成立。
+## update
+```js
+console.log('aa' instanceof String) // 都说了判断引用类型，拿个基本类型出来坑爹么
+let obj_string = new String('aa');
+console.log(obj_string instanceof String)
 ```
+注意包装类型的坑，new出来的永远是对象
+```js
+console.log(String instanceof String); 
+console.log(Object instanceof Object); 
+console.log(Function instanceof Function); 
+console.log(Function instanceof Object);
+```
+尝试能否答对？

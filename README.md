@@ -55,7 +55,9 @@ embed标签
 - [class中的this](./js/thisInClass.md)
 - [static关键字](./js/static.md)
 - [generator](./js/generator.md)
+- [instanceof](./js/instanceof.md)
 - [正则](./js/reg.md)
+- [Object.prototype.constructor](./js/constructor.md)
 ## handwirte
 - [instanceOf](./js/instanceof.md)
 - [debounce](./js/debounce.md)
@@ -112,6 +114,9 @@ embed标签
 - [How tracking pixels work](./read/trackPixels.md)
 - [The Order of CSS Classes in HTML Doesn’t Matter](./read/cssClassesOrder.md)
 - [深入理解JavaScript prototype污染攻击](./read/javascriptPrototypePollutionAttack.md)
+- [前端技巧获取csrf-token](./read/fontendGetToken.md)
+- [electron漏洞](./read/electronBug.md)
+- [sql注入类型和原理](./read/sqlInjection.md)
 ## others
 - [从乱码到base64](./others/from-error-code-to-base64.md)
 - [牛顿法求平方根](./others/newTownSqrt.md)
