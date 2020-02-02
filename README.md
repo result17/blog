@@ -58,6 +58,7 @@ embed标签
 - [instanceof](./js/instanceof.md)
 - [正则](./js/reg.md)
 - [Object.prototype.constructor](./js/constructor.md)
+- [简单的发布订阅模式](./js/createEventHub.md)
 ## handwirte
 - [instanceOf](./js/instanceof.md)
 - [debounce](./js/debounce.md)
@@ -117,6 +118,7 @@ embed标签
 - [前端技巧获取csrf-token](./read/fontendGetToken.md)
 - [electron漏洞](./read/electronBug.md)
 - [sql注入类型和原理](./read/sqlInjection.md)
+- [python笔记](./read/pythonNote.md)
 ## others
 - [从乱码到base64](./others/from-error-code-to-base64.md)
 - [牛顿法求平方根](./others/newTownSqrt.md)

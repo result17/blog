@@ -1,15 +1,17 @@
+## 阅读链接
+https://github.com/amandakelake/blog/issues/36
 ## 简单实现
 ```js
 function instance_of(L, R) {//L 表示左边的object，R 表示右边的constructor
-  // if (L === null) return
-  const R_P = R === null ? null : R.prototype;// 取 R 的显式原型
-  L = L.__proto__;// 取 L 的隐式原型,并且可能会顺着原型链重新赋值
+  if (L === null) return
+  const R_P = R === null ? null : R.prototype// 取 R 的显式原型
+  L = L.__proto__// 取 L 的隐式原型,并且可能会顺着原型链重新赋值
   while (true) { 
     if (L === null) 
-      return false; 
+      return false
     if (R_P === L)// 这里重点：严格比较 true 
-      return true; 
-    L = L.__proto__; 
+      return true;
+    L = L.__proto__
   } 
 }
 ```
