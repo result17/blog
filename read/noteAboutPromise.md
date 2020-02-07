@@ -36,7 +36,7 @@ putYourRightFootIn()
   .then(putYourRightFootIn)  
   .then(shakeItAllAbout);
 ```
-这是一种美观而且有效的代码机器
+这是一种美观而且有效的代码技巧
 ## promise穿透
 ```js
 Promise.resolve('foo').then(Promise.resolve('bar')).then(function (result) {

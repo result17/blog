@@ -120,6 +120,7 @@ embed标签
 - [electron漏洞](./read/electronBug.md)
 - [sql注入类型和原理](./read/sqlInjection.md)
 - [python笔记](./read/pythonNote.md)
+- [taiko-web-code-note](./read/taiko-web-code-note.md)
 ## others
 - [从乱码到base64](./others/from-error-code-to-base64.md)
 - [牛顿法求平方根](./others/newTownSqrt.md)
