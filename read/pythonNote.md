@@ -113,3 +113,4 @@ raise NameError('HiThere')
 ```
 如果存在 finally 子句，则 finally 子句将作为 try 语句结束前的最后一项任务被执行。 finally 子句不论 try 语句是否产生了异常都会被执行。 以下几点讨论了当异常发生时一些更复杂的情况：
 ## 类
+python是没有new操作符的。构造函数跟普通函数都是使用()调用的。

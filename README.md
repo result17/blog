@@ -78,6 +78,7 @@ embed标签
 - [二叉树的最大深度](./leetcode/biggerDepthInBT.md)
 - [二叉树的最小深度](./leetcode/smallestDepthInBT.md)
 - [是否为平衡二叉树](./leetcode/isBalancedTree.md)
+- [有序数组转为二叉搜索输](./leetcode/convertSortedArraytoBinarySearchTree.md)
 - [二叉树中和为某一值的路径](./leetcode/113pathSumII.md)
 - [最长无重复字符字串](./leetcode/3longestSubstringWithoutRepeatingCharacters.md)
 - [一次遍历删除链表倒数第k个节点](./leetcode/19removeNthNodeFromEndofList.md)
@@ -111,6 +112,7 @@ embed标签
 ## tools
 - [vscode使用坑点](./tools/useVSCode.md)
 - [github使用ssh连接](./tools/sshGithub.md)
+- [curl使用记录](./tools/curl.md)
 ## read
 - [We have a problem with promises](./read/noteAboutPromise.md)
 - [How tracking pixels work](./read/trackPixels.md)
@@ -121,6 +123,7 @@ embed标签
 - [sql注入类型和原理](./read/sqlInjection.md)
 - [python笔记](./read/pythonNote.md)
 - [taiko-web-code-note](./read/taiko-web-code-note.md)
+- [cpp笔记](./read/cppNote.md)
 ## others
 - [从乱码到base64](./others/from-error-code-to-base64.md)
 - [牛顿法求平方根](./others/newTownSqrt.md)
@@ -130,3 +133,4 @@ embed标签
 - [chrome不能使用的端口](./others/errorPorts.md)
 - [promise问题](./others/promiseProblem.md)
 - [jquery选择器性能](./others/jqSelctorPerforme.md)
+- [hupu水印](./others/hupuLogo.md)
