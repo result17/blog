@@ -20,4 +20,20 @@ var lengthOfLongestSubstring = function(s) {
   }
   return max
 };
-````
+```
+update: 更新利用ansii字符编码来记录字符的idx
+```python
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        if not s:
+            return 0
+        slen = len(s)
+        idxlist = [-1] * 128
+        start = ans = 0
+        for end in range(slen):
+            start = max(start, idxlist[ord(s[end])] + 1)
+            ans = max(ans, end - start + 1)
+            idxlist[ord(s[end])] = end
+        return ans
+```
+ord()将char转化为对应的ansii数字

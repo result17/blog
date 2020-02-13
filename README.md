@@ -82,6 +82,7 @@ embed标签
 - [二叉树中和为某一值的路径](./leetcode/113pathSumII.md)
 - [最长无重复字符字串](./leetcode/3longestSubstringWithoutRepeatingCharacters.md)
 - [一次遍历删除链表倒数第k个节点](./leetcode/19removeNthNodeFromEndofList.md)
+- [删除BST中的节点](./leetcode/)
 ## react
 - [the note of reactjs-interview-questions](./react/reactjs-interview-questions.md)
 - [react开发相关库](./react/reactLibs.md)
@@ -103,10 +104,11 @@ embed标签
 - [深入理解计算机系统第二章](./books/CSAPPChar2.md)
 - [python学习笔记(雨痕3rd)的简记](./books/pyNote.md)
 - [深入理解typescript](./books/typescript.md)
-- [深入浅出 Webpack](./books/webpack.md)
+- [深入浅出Webpack](./books/webpack.md)
 - [算法第四版第一章](./books/algorithms4rdChar1.md)
 - [深入浅出node](./books/node.md)
 - [计算机网络第七版](./books/computerNetwork7st.md)
+- [The C Programing language](./books/cNote.md)
 ## liunx
 - [使用linux坑点记录](./linux/useLinux.md)
 ## tools
