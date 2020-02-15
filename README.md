@@ -82,7 +82,9 @@ embed标签
 - [二叉树中和为某一值的路径](./leetcode/113pathSumII.md)
 - [最长无重复字符字串](./leetcode/3longestSubstringWithoutRepeatingCharacters.md)
 - [一次遍历删除链表倒数第k个节点](./leetcode/19removeNthNodeFromEndofList.md)
-- [删除BST中的节点](./leetcode/)
+- [删除BST中的节点](./leetcode/450deleteNodeInBST.md)
+- [下一个排列](./leetcode/31nextPermutation.md)
+- [子集2](./leetcode/90subsetsii.md)
 ## react
 - [the note of reactjs-interview-questions](./react/reactjs-interview-questions.md)
 - [react开发相关库](./react/reactLibs.md)
