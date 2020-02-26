@@ -1,3 +1,4 @@
+## ssh连接
 https://help.github.com/cn/github/authenticating-to-github/connecting-to-github-with-ssh
 生成公私钥
 ```bash
@@ -14,3 +15,9 @@ git remote rm origin
 gir remote add origin git@github.com:yourusername/reponame,git
 git push -u origin master
 ```
+## git pull hang on unpack objects
+解决方法是
+```bash
+git pull git://github.com/result17/blog
+```
+默认是使用https协议，不知道什么原因一直卡死。

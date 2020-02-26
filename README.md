@@ -66,6 +66,7 @@ embed标签
 ## 剑指offer
 - [数组中重复的数字](./offer/problem3.md)
 ## leetcode
+- [排序]
 - [最大子序和](./leetcode/53MaximumSubarray.md)
 - [二叉树的前序遍历](./leetcode/144BinaryTreePreorderTraversal.md)
 - [二叉树的中序遍历](./leetcode/94BinaryTreeInorderTraversal.md)
@@ -85,6 +86,7 @@ embed标签
 - [删除BST中的节点](./leetcode/450deleteNodeInBST.md)
 - [下一个排列](./leetcode/31nextPermutation.md)
 - [子集2](./leetcode/90subsetsii.md)
+- [二分查找](./leetcode/binarySearch.md)
 ## react
 - [the note of reactjs-interview-questions](./react/reactjs-interview-questions.md)
 - [react开发相关库](./react/reactLibs.md)
@@ -115,7 +117,7 @@ embed标签
 - [使用linux坑点记录](./linux/useLinux.md)
 ## tools
 - [vscode使用坑点](./tools/useVSCode.md)
-- [github使用ssh连接](./tools/sshGithub.md)
+- [github使用坑点](./tools/sshGithub.md)
 - [curl使用记录](./tools/curl.md)
 ## read
 - [We have a problem with promises](./read/noteAboutPromise.md)
@@ -138,3 +140,4 @@ embed标签
 - [promise问题](./others/promiseProblem.md)
 - [jquery选择器性能](./others/jqSelctorPerforme.md)
 - [hupu水印](./others/hupuLogo.md)
+- [从JS对象转换为dom](./others/element.md)

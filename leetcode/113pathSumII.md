@@ -38,3 +38,29 @@ var pathSum = function(root, target) {
   return result
 }
 ```
+
+```python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def pathSum(self, root: TreeNode, sum: int) -> List[List[int]]:
+        if not root: return []
+        res = list()
+        self.traverse(res, root, sum, list())
+        return res
+    def traverse(self, res: List[List[int]], node: TreeNode, n: int, l: List[int]) -> None:
+        if not node.left and not node.right and node.val == n:
+            l.append(node.val)
+            res.append(l)
+        if node.left:
+            self.traverse(res, node.left, n - node.val, l + [node.val])
+        if node.right:
+            self.traverse(res, node.right, n - node.val, l + [node.val])
+            
+```
+两个错误，第一个append是没有返回值的，第二个每次递归时，要使用新的list进行保存，如果left和right共用使用同一个list，结果就会出错。

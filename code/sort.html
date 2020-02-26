@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+    }
+    #app {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100vw;
+      height: 100vh;
+      flex-direction: column;
+    }
+    .element-wrapper {
+      display: inline-block;
+      margin-left: 10px;
+    }
+    .number {
+      padding-left: 7px;
+    }
+    .element {
+      width: 30px;
+      text-align: center;
+      border-bottom: 1px solid black;
+      transition: padding-top 2s;
+    }
+    #list-wrapper {
+      margin-top: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h2 id="stage">random</h2>
+    <div id="list-wrapper"></div>
+  </div>
+  <script src="./List.js"></script>
+  <script>
+    let list = new List([7, 1, 15, 6, 9, 0, 11, 23, 3, 6])
+    list.selectionSort()
+  </script>
+</body>
+</html>

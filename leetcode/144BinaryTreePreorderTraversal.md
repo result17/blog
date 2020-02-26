@@ -55,3 +55,4 @@ var preorderTraversal = function(root) {
   return res
 }
 ```
+类似回溯的使用，本质是dfs
