@@ -66,14 +66,16 @@ embed标签
 ## 剑指offer
 - [数组中重复的数字](./offer/problem3.md)
 ## leetcode
-- [排序]
 - [最大子序和](./leetcode/53MaximumSubarray.md)
 - [二叉树的前序遍历](./leetcode/144BinaryTreePreorderTraversal.md)
 - [二叉树的中序遍历](./leetcode/94BinaryTreeInorderTraversal.md)
 - [二叉树的后序遍历](./leetcode/145BinaryTreePostorderTraversal.md)
+- [定义BST](./leetcode/createBST.md)
 - [重建二叉树](./leetcode/rebuildBT.md)
+- [相同的树](./leetcode/100sameTree.md)
 - [对称二叉树](./leetcode/isSymmetrical.md)
 - [镜像二叉树](./leetcode/mirrorTree.md)
+- [翻转二叉树](./leetcode/951flipEquivalentBinaryTrees.md)
 - [二叉搜索树中第K小的节点](./leetcode/kthNodeInBST.md)
 - [是否为二叉搜索树的后序遍历序列](./leetcode/verifySquenceOfBST.md)
 - [二叉树的最大深度](./leetcode/biggerDepthInBT.md)
@@ -87,6 +89,8 @@ embed标签
 - [下一个排列](./leetcode/31nextPermutation.md)
 - [子集2](./leetcode/90subsetsii.md)
 - [二分查找](./leetcode/binarySearch.md)
+- [62 unique Paths](./leetcode/62uniquePath.md)
+- [926. Flip String to Monotone Increasing](./leetcode/926filpStringtoMonotoneIncreasing.md)
 ## react
 - [the note of reactjs-interview-questions](./react/reactjs-interview-questions.md)
 - [react开发相关库](./react/reactLibs.md)

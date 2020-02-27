@@ -38,6 +38,34 @@ var pathSum = function(root, target) {
   return result
 }
 ```
+注意，left和right共用相同的栈，而且每次都会push node.val，所以当不满足条件时要进行退栈pop()
+```python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def pathSum(self, root: TreeNode, sum: int) -> List[List[int]]:
+        path = []
+        
+        def dfs(node, sum, path_nodes, path):
+            
+            if not node:
+                return
+            path_nodes.append(node.val)
+            if sum == node.val and not node.left and not node.right:
+                path.append(list(path_nodes))
+            else:
+                dfs(node.left, sum - node.val, path_nodes, path)
+                dfs(node.right, sum - node.val, path_nodes, path)
+            path_nodes.pop()
+        
+        dfs(root, sum, [], path)
+        return path
+```
 
 ```python
 # Definition for a binary tree node.
