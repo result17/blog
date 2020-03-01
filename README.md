@@ -145,3 +145,4 @@ embed标签
 - [jquery选择器性能](./others/jqSelctorPerforme.md)
 - [hupu水印](./others/hupuLogo.md)
 - [从JS对象转换为dom](./others/element.md)
+- [cmd坑点及前端视觉坑点](./others/cmd.md)
