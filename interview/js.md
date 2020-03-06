@@ -170,3 +170,18 @@ function matrix(n) {
   return res
 }
 ```
+```js
+let arr = [1, 2, 3];
+let fnArray = [];
+for (var i = 0; i < arr.length; i++) {
+    fnArray[i] = function () {
+        return arr[i] * 2;
+    }
+}
+let result = fnArray.find((fn) => {
+    return fn() === 4;
+})
+console.log(result);
+```
+
+这有一个小小的坑就是，循环结束i的值是3而不是2。arr这个数组显然没有索引为3的元素，所以undefined * 2 = NaN , NaN 自然不等于4。
