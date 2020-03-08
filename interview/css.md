@@ -408,3 +408,52 @@ width:auto 会使元素撑满整个父元素，margin、border、padding、conte
 总的来说，可以把它看作是一个类似优先级的机制， "position:absolute" 和 "position:fixed" 优先级最高，有它存在
 的时候，浮动不起作用，'display' 的值也需要调整；其次，元素的 'float' 特性的值不是 "none" 的时候或者它是根元素
 的时候，调整 'display' 的值； 最后，非根元素，并且非浮动元素，并且非绝对定位的元素，'display' 特性值同设置值。
+## margin 重叠问题
+块级元素的上外边距（margin-top）与下外边距（margin-bottom）有时会合并为单个外边距，这样的现象称为 “margin 合
+并”。
+
+产生折叠的必备条件：margin 必须是邻接的!
+
+而根据 w3c 规范，两个 margin 是邻接的必须满足以下条件：
+
+  • 必须是处于常规文档流（非 float 和绝对定位）的块级盒子，并且处于同一个 BFC 当中。
+  • 没有线盒，没有空隙，没有 padding 和 border 将他们分隔开
+  • 都属于垂直方向上相邻的外边距，可以是下面任意一种情况
+  • 元素的 margin-top 与其第一个常规文档流的子元素的 margin-top
+  • 元素的 margin-bottom 与其下一个常规文档流的兄弟元素的 margin-top
+  • height 为 auto 的元素的 margin-bottom 与其最后一个常规文档流的子元素的 margin-bottom
+  • 高度为0并且最小高度也为0，不包含常规文档流的子元素，并且自身没有建立新的 BFC 的元素的 margin-top
+    和 margin-bottom
+
+
+margin 合并的3种场景：
+
+（1）相邻兄弟元素 margin 合并。
+
+  解决办法：
+    • 设置块状格式化上下文元素（BFC）
+
+（2）父级和第一个/最后一个子元素的 margin 合并。
+
+解决办法：
+
+对于 margin-top 合并，可以进行如下操作（满足一个条件即可）：
+  • 父元素设置为块状格式化上下文元素；
+  • 父元素设置 border-top 值；
+  • 父元素设置 padding-top 值；
+  • 父元素和第一个子元素之间添加内联元素进行分隔。
+
+对于 margin-bottom 合并，可以进行如下操作（满足一个条件即可）：
+  • 父元素设置为块状格式化上下文元素；
+  • 父元素设置 border-bottom 值；
+  • 父元素设置 padding-bottom 值；
+  • 父元素和最后一个子元素之间添加内联元素进行分隔；
+  • 父元素设置 height、min-height 或 max-height。
+
+  （3）空块级元素的 margin 合并。
+
+  解决办法：
+    • 设置垂直方向的 border；
+    • 设置垂直方向的 padding；
+    • 里面添加内联元素（直接 Space 键空格是没用的）；
+    • 设置 height 或者 min-height。

@@ -3,7 +3,7 @@ token完全由应用管理，所以它可以避开同源策略。
 token可以避免CSRF攻击
 token是无状态，可以在多个服务器间共享。
 ## token如何防范CSRF攻击
-首先，来说请吃一般CSRF攻击分为get类型的csrf，还有post类型的csrf最后还有a链接的csrf
+首先，来说一般CSRF攻击分为get类型的csrf，还有post类型的csrf最后还有a链接的csrf
 - get类型的csrf
 ```js
  <img src="http://bank.example/withdraw?amount=10000&for=hacker" > 

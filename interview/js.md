@@ -185,3 +185,24 @@ console.log(result);
 ```
 
 这有一个小小的坑就是，循环结束i的值是3而不是2。arr这个数组显然没有索引为3的元素，所以undefined * 2 = NaN , NaN 自然不等于4。
+```js
+// destructuringArray( [1,[2,4],3], "[a,[b],c]" );
+// result
+// { a:1, b:2, c:3 }
+
+```
+```js
+// todo
+```
+
+给定一个一维数组arr，将其按一定数量num分组为二维数组，例如: 条件为arr=[0,1,2,3,4,5,6], num=3, 结果为[[0,1,2],[3,4,5],[6]]
+```js
+function solution(ary, num) {
+  let res = [], i = 0
+  while (i < ary.length) {
+    res.push(ary.slice(i, i + num))
+    i += num
+  }
+  return res
+}
+```
