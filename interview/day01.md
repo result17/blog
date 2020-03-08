@@ -1,5 +1,5 @@
 ## 五层计算机网络模型，每层的重要协议有哪些？tcp握手和挥手原理？
-- 五层从低到高分别为物理层，链路层，网络层，链路层以及应用层。
+- 五层从低到高分别为物理层，链路层，网络层，传输层以及应用层。
 - 物理层是将物理信号转化为逻辑意义上的0和1的比特流。
 - 链路层是使用点对点信道和广播信道，意义是物理层上的比特流在传输介质上存在误差，而链路层通过差错检测，透明传输和封装成帧等方法，向网络层提供高质量的数据传输服务。同时，应当指出链路层也存在滑动窗口机制。
 - 网络层向上只提供简单灵活的，无连接的，尽最大努力交付的数据报服务。最重要的协议是IP协议（网际协议）。跟IP协议搭配使用的是ARP协议（地址解析协议）。
@@ -11,7 +11,7 @@ IP协议分为IPv4和IPv6。现在IPv4地址已经耗尽，解决此问题是使
 - 传输层协议主要是为不同主机上的不同进程间提供了逻辑通信的功能。运输层的两个重要协议是UDP和TCP协议。
 分用：运输层从IP层收到发送给各应用进程的数据，必须分别交付指明的应用进程称。
 复用：应用层的所有应用进程都可以通过运输层再传送到IP层。
-服务器使用端口号：常用的是http80，https443，dns53，ftp21.
+服务器使用端口号：常用的是http80，https443，dns53，ftp21。
 登记端口号：没有熟知端口号的应用程序使用，数值为1024-65535。
 UDP协议：是无连接，尽最大努力交付，面向报文，没有拥塞控制机制（允许丢失一部分数据，但不允许有太大的时延）的协议。
 TCP协议：是面向连接的传输层协议，每一条TCP协议连接的是点对点，TCP提供的是可靠交付的服务，提供全双工通信，面向字节流。
@@ -23,13 +23,13 @@ TCP的拥塞控制方法是慢开始，拥塞避免，快重传和快恢复。
 假设有用户A和服务器B，A主动打开连接，而B被动打开连接。
 开始时B的TCP服务器进程先创建传输控制块TCB，接受客户进程连接请求，处于LISTEN状态。
 
-1. A的TCP客户进程也创建传输控制块TCB，握手时向B发出连接请求报文段，此时首部的同步位SYN = 1，同时悬着一个初始序号seq = x。TCP客户进程进入SYN-SENT状态。
+1. A的TCP客户进程也创建传输控制块TCB，握手时向B发出连接请求报文段，此时首部的同步位SYN = 1，假设一个初始序号seq = x。TCP客户进程进入SYN-SENT状态。
 2. 服务器B收到连续请求报文段后，如果同意连接，则向A发送确认报文。将SYN和ACK位都置1。确认号是ack = x + 1, 同时也为自己选择一个初始序号seq = y.
-3. A最后还应最后确认。将确认报文的ACK置1。确认号ack = y + 1，自己的序号则是seq = x + 1。A进入ESTABLISHED状态。当B收到最后确认后，也进入ESTABLISHED状态。
+3. A还应最后确认。将确认报文的ACK置1。确认号ack = y + 1，自己的序号则是seq = x + 1。A进入ESTABLISHED状态。当B收到最后确认后，也进入ESTABLISHED状态。
 ### 为什么还要发送最后一次确认？
 主要是为了防止已经失效的连接请求报文段突然又传回到B，因而产生错误。
 
-- TCP挥手
+- TCP挥手<br/>
 通信双方都可以进行挥手，而且双方都处于ESTABLISHED状态。假设A进行挥手：
 1. A发送连接释放报文，并停止发送数据。将FIN置1，其序号seq = u。其A进入FIN-WAIT-1状态。
 2. B发出确认，ACK置为1，确认号是ack = u + 1，然后选择报文段序号为v，B进入CLOSE-WAIT状态。A收到B的确认后进入FIN-WAIT-2状态。
@@ -114,4 +114,107 @@ export function shuffle(items) {
   }
   return items
 }
+```
+ ### 113 pathSum
+ ```js
+ /**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @param {number} sum
+ * @return {number[][]}
+ */
+var pathSum = function(root, sum) {
+  if (!root) return []
+  let res = [], list = []
+  function travser(root, n, res, list) {
+    if (!root.left && !root.right && root.val === n) {
+      list.push(n)
+      res.push(list)
+    }
+    if (root.left) {
+      list.push(root.val)
+      travser(root.left, n - root.val, res, list)
+    }
+    if (root.right) {
+      list.push(root.val)
+      travser(root.right, n - root.val, res, list)
+    }
+  }
+  travser(root, sum, res, list)
+  return res
+};
+ ```
+ 上面是我常犯的错误，list如果push进入会修改原来的list，导致下一次调用travser，list会重复。
+
+ ```js
+  /**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @param {number} sum
+ * @return {number[][]}
+ */
+var pathSum = function(root, sum) {
+  if (!root) return []
+  let res = [], list = []
+  function travser(root, n, res, list) {
+    if (!root.left && !root.right && root.val === n) {
+      list.push(n)
+      res.push(list)
+    }
+    if (root.left) {
+      list.push(root.val)
+      travser(root.left, n - root.val, res, list.concat(root.val))
+    }
+    if (root.right) {
+      list.push(root.val)
+      travser(root.right, n - root.val, res, list.concat(root.val))
+    }
+  }
+  travser(root, sum, res, list)
+  return
+```
+```js
+ /**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @param {number} sum
+ * @return {number[][]}
+ */
+var pathSum = function(root, sum) {
+  if (!root) return []
+  let res = [], list = []
+  function travser(root, n, res, list) {
+    list.push(root.val)
+    n -= root.val
+    if (!root.left && !root.right && n === 0) {
+      res.push(list.slice())
+    }
+    if (root.left) {
+      travser(root.left, n, res, list)
+    }
+    if (root.right) {
+      travser(root.right, n, res, list)
+    }
+    list.pop()
+  }
+  travser(root, sum, res, list)
+  return
 ```
