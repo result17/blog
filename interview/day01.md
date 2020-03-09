@@ -102,7 +102,7 @@ Set-Cookie: __Host-session=123; path=/; Secure; HttpOnly; SameSite=Lax
 点击劫持：
 允许恶意网站以用户的名义点击“受害站点”。通常恶意网页在受害者网站链接中贴下一个透明的iframe。
 防范：
-服务端 header 字段 X-Frame-Options 能够允许或禁止 frame 内页面的显示。
+服务端 header 字段 X-Frame-Options 能够允许或禁止 iframe 内页面的显示。
 
 ### 如何打乱数组？
 ```js
@@ -115,6 +115,7 @@ export function shuffle(items) {
   return items
 }
 ```
+典型错误)后没有引号再起一个语句
  ### 113 pathSum
  ```js
  /**
