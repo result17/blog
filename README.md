@@ -59,6 +59,7 @@ embed标签
 - [正则](./js/reg.md)
 - [Object.prototype.constructor](./js/constructor.md)
 - [简单的发布订阅模式](./js/createEventHub.md)
+- [匹配汉字的正则表达式](./js/hanzi.md)
 ## handwirte
 - [instanceOf](./js/instanceof.md)
 - [debounce](./js/debounce.md)
