@@ -14,7 +14,7 @@ let q = null
 let callback = text => {
   q = text.split('---').slice(1)
 }
-ajax('get', 'https://raw.githubusercontent.com/lydiahallie/javascript-questions/master/zh-CN/README-zh_CN.md', callback)
+ajax('get', 'https://raw.githubusercontent.com/result17/blog/master/others/js-question-zh.md', callback)
 ```
 
 ### || 运算符
