@@ -1,3 +1,22 @@
+## 手写ajax
+```js
+function ajax(method, url, cb) {
+  const xhr = new XMLHttpRequest()
+  xhr.open(method, url)
+  xhr.send()
+  xhr.onreadystatechange = function (){
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      cb(xhr.responseText)
+    }
+  }
+}
+let q = null
+let callback = text => {
+  q = text.split('---').slice(1)
+}
+ajax('get', 'https://raw.githubusercontent.com/lydiahallie/javascript-questions/master/zh-CN/README-zh_CN.md', callback)
+```
+
 ### || 运算符
 With the || operator, we can return the first truthy operand. If all values are falsy, the last operand gets returned.
 

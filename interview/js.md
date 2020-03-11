@@ -206,3 +206,20 @@ function solution(ary, num) {
   return res
 }
 ```
+## type module妙用
+```js
+// 支持 <script type="module"> 的浏览器也支持 async 和 await 函数。
+// 支持 <script type="module"> 的浏览器也支持 Class 类。
+// 支持 <script type="module"> 的浏览器也支持 arrow functions。
+// 支持 <script type="module"> 的浏览器也支持 fetch 、Promises、Map、Set 等更多 ES2015+ 语法。
+```
+```js
+<!-- Browsers with ES module support load this file. -->
+<script type="module" src="main.js"></script>
+
+<!-- Older browsers load this file (and module-supporting -->
+<!-- browsers know *not* to load this file). -->
+<script nomodule src="main-legacy.js"></script>
+```
+这里唯一的问题是 Safari 10 并不支持 nomodule 属性，但是为了解决这一问题，你可以在使用 <script nomodule> 标签前，在 HTML 中使用内联JavaScript代码片段（注意：这个插件已经安装在 Safari11 版本中了
+https://jdc.jd.com/archives/4911#post_comment
