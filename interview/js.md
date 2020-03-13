@@ -223,3 +223,105 @@ function solution(ary, num) {
 ```
 这里唯一的问题是 Safari 10 并不支持 nomodule 属性，但是为了解决这一问题，你可以在使用 <script nomodule> 标签前，在 HTML 中使用内联JavaScript代码片段（注意：这个插件已经安装在 Safari11 版本中了
 https://jdc.jd.com/archives/4911#post_comment
+
+## 算法题
+给定一个正整数数列a, 对于其每个区间, 我们都可以计算一个X值;
+X值的定义如下: 对于任意区间, 其X值等于区间内最小的那个数乘上区间内所有数和;
+现在需要你找出数列a的所有区间中, X值最大的那个区间;
+如数列a为: 3 1 6 4 5 2; 则X值最大的区间为6, 4, 5, X = 4 * (6+4+5) = 60;
+
+https://juejin.im/post/5e6a14b1f265da572978a1d3
+```js
+// 第一次作答的大概代码（部分变量忘记更新，还有优化的地方）
+function solution(list) {
+  debugger
+  if (!list.length) return []
+  // 正整数数组
+  let left = 0, totalMaxX = 0, rl = 0, rr = 0
+  for (; left < list.length; left++) {
+    let min = list[left], sum = list[left], tempX = sum * sum, tl = tr = left
+    for (let right = left + 1; right < list.length; right++) {
+      sum += list[right]
+      if (list[right] >= min) {
+        // 肯定会增加的
+        tempX += min * list[right]
+        tr = right
+      } else {
+        // 不一定会增加的
+        min = list[right]
+        let tempVal = min * sum
+        if (tempVal > tempX) {
+          tr = right
+          tempX = tempVal
+        }
+      }
+    }
+    if (tempX > totalMaxX) {
+      rl = tl
+      rr = tr
+      totalMaxX = tempX
+    }
+  }
+  return list.slice(rl, rr + 1)
+}
+
+solution([3,1,6,4,5,2])
+```
+核心思路是，子数组可以仅由两个变量left和right，用O(n**2)列出所有的子数组，当其不更新最小值时，x的值总会增加，如果更新最小值时，则运算比较并记录。
+优化有两点：
+1. 最外层循环没必要跟tempX比较，直接跟totalMaxX比较更合适。
+2. 当比较3开头的x值，没必要再比较在它右边且比它小或等于它的开头的子数组。因为，最小值肯定出现在3之后，且子区间之和必比3的子区间之和小。
+更晕的是，题目原来是求x的最大值，不是求区间。
+```js
+// 神三元解法
+let maxXValue = (arr) => { 
+    let n = arr.length; 
+    let min = Array.from(new Array(n), _ => new Array(n)); 
+    let res = Array.from(new Array(n), _ => new Array(n)); 
+    let max = Number.MIN_SAFE_INTEGER; 
+    for(let i = 0; i < n; i++) { 
+        for(let j = i; j < n; j++) { 
+            if(i == j) { 
+                min[i][j] = arr[i]; 
+                res[i][j] = arr[i] * arr[i]; 
+                continue; 
+            } 
+            if(arr[j] < min[i][j - 1]) { 
+                min[i][j] = arr[j]; 
+                res[i][j] = (res[i][j - 1] * arr[j] / min[i][j - 1]) + arr[j] * arr[j]; 
+            } else { 
+                min[i][j] = min[i][j - 1]; 
+                res[i][j] = res[i][j - 1] + min[i][j - 1] * arr[j]; 
+            } 
+            max = Math.max(res[i][j], max); 
+        } 
+    } 
+    return max; 
+}
+maxXValue([3,1,16,4,5,2,7,14,3])
+```
+```js
+// my best solution
+function solution(list) {
+  if (!list.length) return []
+  let left = 0, maxX = 0, l = 0, r = 0
+  for (; left < list.length; left++) {
+    let min = list[left], sum = list[left], tempMaxX = sum * sum
+    for (let right = left + 1; right < list.length; right++) {
+      let cur = list[right]
+      sum += cur
+      min = Math.min(cur, min)
+      tempMaxX = min * sum
+      if (tempMaxX > maxX) {
+        maxX = tempMaxX
+        l = left
+        r = right
+      }
+    }
+  }
+  // 逗号表达式故意皮一下
+  return (list.slice(l, r + 1), maxX)
+}
+
+solution([3,1,16,41,5,2,7,14,3])
+```
