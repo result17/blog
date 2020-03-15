@@ -30,3 +30,6 @@ timerID = setTimeout(() => {
   result = fn.apply(context, args)
 }, deplay)
 ```
+防抖的核心是不触发事件一段事件才去执行回调函数。
+可以点击下面的连接，观察它们的区别。
+http://demo.nimius.net/debounce_throttle/

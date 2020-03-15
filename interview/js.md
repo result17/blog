@@ -298,6 +298,7 @@ let maxXValue = (arr) => {
     } 
     return max; 
 }
+maxXValue(9, 1, 1)
 maxXValue([3,1,16,4,5,2,7,14,3])
 ```
 ```js
@@ -308,6 +309,36 @@ function solution(list) {
   for (; left < list.length; left++) {
     let min = list[left], sum = list[left], tempMaxX = sum * sum
     for (let right = left + 1; right < list.length; right++) {
+      let cur = list[right]
+      sum += cur
+      min = Math.min(cur, min)
+      tempMaxX = min * sum
+      if (tempMaxX > maxX) {
+        maxX = tempMaxX
+        l = left
+        r = right
+      }
+    }
+  }
+  // 逗号表达式故意皮一下
+  return (list.slice(l, r + 1), maxX)
+}
+
+solution([3,1,16,41,5,2,7,14,3])
+```
+上面的缺少了单个数字组成的区间
+```js
+function solution(list) {
+  if (!list.length) return []
+  let left = 0, maxX = 0, l = 0, r = 0, maxL = list[left]
+  for (; left < list.length; left++) {
+    if  (list[left] > maxL) {
+      maxL = list[left]
+    } else {
+      continue
+    }
+    let min = list[left], sum = 0, tempMaxX = 0
+    for (let right = left; right < list.length; right++) {
       let cur = list[right]
       sum += cur
       min = Math.min(cur, min)
