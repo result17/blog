@@ -25,7 +25,7 @@ SubType.prototype.__proto__ = SuperType.prototype
 ```js
 function inheritPrototype(subType, superType) {
   // 注意这儿是浅拷贝，我觉得不太好，但如果是深拷贝则会导致内存占用问题
-  var prototype = Object(superType.prototype)
+  var prototype = Object.assign(superType.prototype)
   // 例如此处修改constructor属性也会修改superType.prototype.constructor这显然不合理
   prototype.constructor = subType
   subType.prototype = prototype
