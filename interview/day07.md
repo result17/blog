@@ -164,3 +164,54 @@ useCallback(fn, deps) 相当于 useMemo(() => fn, deps)。
 
 https://juejin.im/post/5e6ccbf86fb9a07cb52bddf1#comment
 这篇博文很好介绍了防抖函数在react hook中怎么避免重复声明
+
+### useEffect避免首次渲染
+https://github.com/wayou/wayou.github.io/issues/39
+
+### filter invert 
+可以使得元素反色，包括img，pre标签，包括video标签，实时渲染视频有没有，真的太强了。
+
+### async-vaildator隐藏后台log
+node_modules/async-vaildator/es/util.js
+```js
+console.warn(type, errors)
+```
+### :root
+对于HTML来说，:root表示html元素
+
+### tcp三次握手的目的（re-learn）
+https://www.zhihu.com/question/24853633
+1. 考虑客户端A发起两次连接请求，第一次长时间在网络滞留，而第二次跟B建立了TCP连接后，第一次请求到达B，B会认为是新的连接请求，而建立连接。此时A并没有发起连接请求，二次握手的话就不再理睬B的请求，导致B一直处在连接状态，消耗B的资源，如果是三次握手，A还可以发送RST(reset包)来取消连接。
+2. 为了同步双方的序列号，两次握手是做不到同步双方的序列号的。B还需要A来确定它的序号。
+更详细就要去学习RFC规范了。
+
+### mysql存储时间
+有三种格式date，datetime和timestamp（4字节存储，2038年问题，真的捞）
+介绍一下datatime的格式
+'YYYY-MM-DD hh:mm:ss.fraction', the range for DATETIME values is '1000-01-01 00:00:00.000000' to '9999-12-31 23:59:59.999999'
+```js
+// 查看时区
+SHOW VARIABLES LIKE '%time_zone%'
+// 查询现在时间
+SELECT NOW();
+// 设置时区
+SET @@time_zone = 'SYSTEM';
+```
+
+### filter作用失效
+filter只作用在content-box上，对于border和margin无效。
+
+### 类似pigfly效果的网站
+http://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20
+
+### 箭头函数与普通函数的区别
+- 箭头函数不会创建自己的this，所以它没有自己的this，它只会从自己的作用域链的上一层继承this。
+- .call()/.apply()/.bind()无法改变箭头函数中this的指向
+- 箭头函数不能作为构造函数使用
+- 箭头函数没有自己的arguments
+- 箭头函数没有原型prototype
+
+### setState的同步和异步
+1. setState只在合成事件和钩子函数中是“异步”的，在原生事件和setTimeout 中都是同步的。
+2. setState 的“异步”并不是说内部由异步代码实现，其实本身执行的过程和代码都是同步的，只是合成事件和钩子函数的调用顺序在更新之前，导致在合成事件和钩子函数中没法立马拿到更新后的值，形成了所谓的“异步”，当然可以通过第二个参数 setState(partialState, callback) 中的callback拿到更新后的结果。
+3. setState 的批量更新优化也是建立在“异步”（合成事件、钩子函数）之上的，在原生事件和setTimeout 中不会批量更新，在“异步”中如果对同一个值进行多次setState，setState的批量更新策略会对其进行覆盖，取最后一次的执行，如果是同时setState多个不同的值，在更新时会对其进行合并批量更新。

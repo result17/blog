@@ -356,3 +356,32 @@ function solution(list) {
 
 solution([3,1,16,41,5,2,7,14,3])
 ```
+## 活用正则的replace
+```js
+// 第一题
+const targetArray = [1, [2, 3], 4];
+const formater = "[a, [b], c]";
+const formaterArray = ['a', ['b'], 'c'];
+
+const destructuringArray = (values, keys) => {
+  try {
+    const obj = {};
+    if (typeof keys === 'string') {
+      keys = JSON.parse(keys.replace(/\w+/g, '"$&"'));
+    }
+    
+    const iterate = (values, keys) =>
+      keys.forEach((key, i) => {
+        if(Array.isArray(key)) iterate(values[i], key)
+        else obj[key] = values[i]
+      })
+      
+    iterate(values, keys)
+    
+    return obj;
+  } catch (e) {
+    console.error(e.message);
+  }
+}
+// https://juejin.im/post/5a92c23b5188257a6b06110b
+```

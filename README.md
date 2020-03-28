@@ -90,8 +90,10 @@ embed标签
 - [下一个排列](./leetcode/31nextPermutation.md)
 - [子集2](./leetcode/90subsetsii.md)
 - [二分查找](./leetcode/binarySearch.md)
-- [62 unique Paths](./leetcode/62uniquePath.md)
+- [62. unique Paths](./leetcode/62uniquePath.md)
 - [926. Flip String to Monotone Increasing](./leetcode/926filpStringtoMonotoneIncreasing.md)
+- [142. Linked List Cycle II](./leetcode/142LinkedListCycleII.md)
+- [287. Find the Duplicate Number](./leetcode/287FindtheDuplicateNumber.md)
 ## react
 - [the note of reactjs-interview-questions](./react/reactjs-interview-questions.md)
 - [react开发相关库](./react/reactLibs.md)
