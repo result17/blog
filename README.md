@@ -126,6 +126,7 @@ embed标签
 - [vscode使用坑点](./tools/useVSCode.md)
 - [github使用坑点](./tools/sshGithub.md)
 - [curl使用记录](./tools/curl.md)
+- [joi文档阅读记录](./tools/joi.md)
 ## read
 - [We have a problem with promises](./read/noteAboutPromise.md)
 - [How tracking pixels work](./read/trackPixels.md)
