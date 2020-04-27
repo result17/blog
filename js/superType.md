@@ -49,3 +49,91 @@ subType.prototype.sayAge = function() {
   alert(this.age)
 }
 ```
+### extends有两条原型链
+```js
+// 1、构造器原型链
+Child.__proto__ === Parent; // true
+Parent.__proto__ === Function.prototype; // true
+Function.prototype.__proto__ === Object.prototype; // true
+Object.prototype.__proto__ === null; // true
+// 2、实例原型链
+child.__proto__ === Child.prototype; // true
+Child.prototype.__proto__ === Parent.prototype; // true
+Parent.prototype.__proto__ === Object.prototype; // true
+Object.prototype.__proto__ === null; // true
+```
+
+### node实现继承的方式
+https://github.com/nodejs/node/blob/master/lib/util.js#L295-L313
+```js
+function inherits(ctor, superCtor) {
+  if (ctor === undefined || ctor === null)
+    throw new ERR_INVALID_ARG_TYPE('ctor', 'Function', ctor);
+
+  if (superCtor === undefined || superCtor === null)
+    throw new ERR_INVALID_ARG_TYPE('superCtor', 'Function', superCtor);
+
+  if (superCtor.prototype === undefined) {
+    throw new ERR_INVALID_ARG_TYPE('superCtor.prototype',
+                                   'Object', superCtor.prototype);
+  }
+  Object.defineProperty(ctor, 'super_', {
+    value: superCtor,
+    writable: true,
+    configurable: true
+  });
+  Object.setPrototypeOf(ctor.prototype, superCtor.prototype);
+}
+```
+
+### 继承
+```js
+// ES5 实现ES6 extends的例子
+function Parent(name){
+    this.name = name;
+}
+Parent.sayHello = function(){
+    console.log('hello');
+}
+Parent.prototype.sayName = function(){
+    console.log('my name is ' + this.name);
+    return this.name;
+}
+
+function Child(name, age){
+    // 相当于super
+    Parent.call(this, name);
+    this.age = age;
+}
+// new
+function object(){
+    function F() {}
+    F.prototype = proto;
+    return new F();
+}
+function _inherits(Child, Parent){
+    // Object.create
+    Child.prototype = Object.create(Parent.prototype);
+    // __proto__
+    // Child.prototype.__proto__ = Parent.prototype;
+    Child.prototype.constructor = Child;
+    // ES6
+    // Object.setPrototypeOf(Child, Parent);
+    // __proto__
+    Child.__proto__ = Parent;
+}
+_inherits(Child,  Parent);
+Child.prototype.sayAge = function(){
+    console.log('my age is ' + this.age);
+    return this.age;
+}
+var parent = new Parent('Parent');
+var child = new Child('Child', 18);
+console.log('parent: ', parent); // parent:  Parent {name: "Parent"}
+Parent.sayHello(); // hello
+parent.sayName(); // my name is Parent
+console.log('child: ', child); // child:  Child {name: "Child", age: 18}
+Child.sayHello(); // hello
+child.sayName(); // my name is Child
+child.sayAge(); // my age is 18
+```

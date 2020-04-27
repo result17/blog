@@ -148,3 +148,58 @@ const curry = (fn: (...args: any[]) => any): function | void {
 - flex-basis  flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。
 - flex  flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。
 - align-self align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，
+
+### node事件循环
+   ┌───────────────────────────┐
+┌─>│           timers          │
+│  └─────────────┬─────────────┘
+│  ┌─────────────┴─────────────┐
+│  │     pending callbacks     │
+│  └─────────────┬─────────────┘
+│  ┌─────────────┴─────────────┐
+│  │       idle, prepare       │
+│  └─────────────┬─────────────┘      ┌───────────────┐
+│  ┌─────────────┴─────────────┐      │   incoming:   │
+│  │           poll            │<─────┤  connections, │
+│  └─────────────┬─────────────┘      │   data, etc.  │
+│  ┌─────────────┴─────────────┐      └───────────────┘
+│  │           check           │
+│  └─────────────┬─────────────┘
+│  ┌─────────────┴─────────────┐
+└──┤      close callbacks      │
+   └───────────────────────────┘
+- timer执行：setTimout setImmediate
+- pending：callbacks执行上一次事件循环没有完成的回调
+- idle, perparenode：node内部调用
+- poll：检索新的 I/O 事件;执行与 I/O 相关的回调（几乎所有情况下，除了关闭的回调函数，那些由计时器和 setImmediate() 调度的之外），其余情况 node 将在适当的时候在此阻塞。
+- 检测：setImmediate() 回调函数在这里执行。
+
+### 转换非ASCII的Unicode字符
+- 浏览器检查输入是否含有不是 a-z， A-Z，0-9， - 或者 . 的字符
+可以使用encodeURIComponent()进行转义。
+
+### 红绿灯最全解法
+https://segmentfault.com/a/1190000016892070
+```js
+var round = 0;
+var maxRound = 3;
+
+(async function step() { 
+   if(++round > maxRound) {
+        return;
+    }
+    console.log(`Round ${round}`);
+    await tic(3000,red);
+    await tic(2000, green);
+    await tic(1000, yellow)
+    step();
+})()
+```
+```js
+var tic = function(timmer, cb){
+    return new Promise(function(resolve, reject) {
+        cb();
+        setTimeout(resolve, timmer);
+    });
+}
+```
