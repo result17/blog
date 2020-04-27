@@ -50,7 +50,8 @@ const deepClone = obj => JSON.parse(JSON.stringify(obj))
 贴出一个我曾经写的答案
 ```js
 function deepClone(target, map = new WeakMap()) {
-  let typeCheck = (tar) => Object.prototype.toString.call(tar), res
+  let typeCheck = tar => Object.prototype.toString.call(tar)
+  let res
   if (typeCheck(target) === '[object Object]') {
     res = {}
   } else if (typeCheck(target) === '[object Array]') {

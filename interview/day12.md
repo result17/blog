@@ -55,7 +55,10 @@ const destructuringArray = (ary, shape) => {
 重点就是keys.replace(/\w+/g, '"$&"'), JSON.parse()里面的key需要双引号
 
 ### Object.create()
-Object.create()方法创建一个新对象，使用现有的对象来提供新创建的对象的__proto__。
+Object.create()方法创建一个新对象，使用现有的对象来提供新创建的对象的__proto__。相当于
+```js
+SubType.prototype = new SuperType()
+```
 有两个参数
 proto
 新创建对象的原型对象。
@@ -105,3 +108,72 @@ MyClass.prototype.myMethod = function() {
      // do a thing
 };
 ```
+
+### 设计模式
+
+https://zhuanlan.zhihu.com/p/43283016
+
+### nodejs线程
+在 Node.js 中，有两种类型的线程：一个事件循环线程（也被称为主循环，主线程，事件线程等）。另外一个是在工作线程池里的 k 个工作线程（也被称为线程池）。
+
+Node.js 使用谷歌的 V8 引擎处理 JavaScript，对于大部分操作确实很快。 但有个例外是正则表达式以及 JSON 的处理，下面会讨论。
+
+### cluster
+http://www.alloyteam.com/2015/08/nodejs-cluster-tutorial/
+方案一：1 个 Node 实例开启多个端口，通过反向代理服务器向各端口服务进行转发
+方案二：1 个 Node 实例开启多个进程监听同一个端口，通过负载均衡技术分配请求（Master->Worker）
+
+每个 worker 进程通过使用 child_process.fork() 函数，基于 IPC（Inter-Process Communication，进程间通信），实现与 master 进程间通信
+
+### js阻塞css和dom的渲染根本原因
+浏览器是多进程程序，其执行js进程跟GUI渲染进程互斥 
+
+### react生命周期
+挂载阶段
+constructor
+getDerivedStateFromProps
+render
+componentDidMount
+
+更新阶段
+getDerivedStateFromProps
+shouldComponentUpdate(nextProps, nextState): boolean
+render
+getSnapshotBeforeUpdate
+componentDidUpdate
+
+卸载阶段
+componentWillUnmount
+
+### react请求放在哪一个生命周期
+React的异步请求到底应该放在哪个生命周期里,有人认为在componentWillMount中可以提前进行异步请求,避免白屏,其实这个观点是有问题的.
+由于JavaScript中异步事件的性质，当您启动API调用时，浏览器会在此期间返回执行其他工作。当React渲染一个组件时，它不会等待componentWillMount它完成任何事情 - React继续前进并继续render,没有办法“暂停”渲染以等待数据到达。
+而且在componentWillMount请求会有一系列潜在的问题,首先,在服务器渲染时,如果在 componentWillMount 里获取数据，fetch data会执行两次，一次在服务端一次在客户端，这造成了多余的请求,其次,在React 16进行React Fiber重写后,componentWillMount可能在一次渲染中多次调用.
+目前官方推荐的异步请求是在componentDidmount中进行.
+
+链接：https://juejin.im/post/5d5f44dae51d4561df7805b4
+
+### get和post的区别
+语义get获取资源，post提交
+从缓存的角度，GET 请求会被浏览器主动缓存下来，留下历史记录，而 POST 默认不会。
+从编码的角度，GET 只能进行 URL 编码，只能接收 ASCII 字符，而 POST 没有限制。
+从参数的角度，GET 一般放在 URL 中，因此不安全，POST 放在请求体中，更适合传输敏感信息。
+从幂等性的角度，GET是幂等的，而POST不是。(幂等表示执行相同的操作，结果也是相同的)
+（最后一个，我不同意，这可能取决于具体实现不同，RFC并没有规定）
+
+链接：https://juejin.im/post/5e76bd516fb9a07cce750746
+
+### 两个display inline-block元素会出现空白
+html中一个隐藏的br元素
+通常fontSize: 0
+html两个元素不换行
+
+```js
+class A {
+  constructor() {
+    
+  }
+}
+```
+
+### es5
