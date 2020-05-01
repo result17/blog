@@ -192,3 +192,4 @@ try {
 ### 异步加载
 js async defened
 还有动态插入script标签
+import()

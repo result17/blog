@@ -70,7 +70,7 @@ function deepClone(target, map = new WeakMap()) {
     return array
   }
 
-  if (map.get(target)) {
+  if (map.has(target)) {
     return map.get(target)
   }
   map.set(target, res)
