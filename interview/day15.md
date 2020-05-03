@@ -192,3 +192,6 @@ function main() {
 main()
 ```
 sleep(2),sleep(4)分别是什么
+
+### type和interface的不同点
+https://juejin.im/post/5c2723635188252d1d34dc7d
