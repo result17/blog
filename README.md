@@ -37,6 +37,7 @@ embed标签
 ```
 ## javascript
 - [理解Array.prototype.sort()](./js/understanding-Array.prototype.sort.md)
+- [初级排序算法实现](./js/sorts.md)
 - [为什么typeof null是object](./js/typeof-null.md)
 - [数组转换为树形对象](./js/ary2TreeObj.md)
 - [树形对象转为数组](./js/treeObj2Ary.md)

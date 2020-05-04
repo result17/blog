@@ -23,7 +23,7 @@ console.log(ary)
 就在于在插入排序的算法中，当待排序元素跟有序元素进行比较时，一旦确定了位置，就不会再跟位置前面的有序元素进行比较，所以就乱序的不彻底。
 ```
 >在我搜索[V8测试源码](https://github.com/v8/v8/blob/4b9b23521e6fd42373ebbcb20ebe03bf445494f9/test/mjsunit/array-sort.js)，发现V8源码在数组长度
-小于或等于22时，采用插入排序。超过22时，使用quickSort。
+小于或等于10时，采用插入排序。超过10时，使用quickSort。
 ```
 要想实现真正乱序，就要用到[洗牌算法](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle)
 ```

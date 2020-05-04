@@ -105,7 +105,7 @@ function Child(name, age){
     Parent.call(this, name);
     this.age = age;
 }
-// new
+// new object.create
 function object(){
     function F() {}
     F.prototype = proto;
