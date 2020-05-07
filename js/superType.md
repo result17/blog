@@ -108,7 +108,8 @@ function Child(name, age){
 // new object.create
 function object(){
     function F() {}
-    F.prototype = proto;
+    F.prototype = pro
+    to;
     return new F();
 }
 function _inherits(Child, Parent){

@@ -61,6 +61,8 @@ embed标签
 - [Object.prototype.constructor](./js/constructor.md)
 - [简单的发布订阅模式](./js/createEventHub.md)
 - [匹配汉字的正则表达式](./js/hanzi.md)
+- [vue3是如何写ts?](./js/vue3.md)
+- [react中的extend](./js/extendInReact.md)
 ## handwirte
 - [instanceOf](./js/instanceof.md)
 - [debounce](./js/debounce.md)
@@ -95,6 +97,7 @@ embed标签
 - [926. Flip String to Monotone Increasing](./leetcode/926filpStringtoMonotoneIncreasing.md)
 - [142. Linked List Cycle II](./leetcode/142LinkedListCycleII.md)
 - [287. Find the Duplicate Number](./leetcode/287FindtheDuplicateNumber.md)
+- [7. Reverse Integer](./leetcode/7ReverseInteger.md)
 ## react
 - [the note of reactjs-interview-questions](./react/reactjs-interview-questions.md)
 - [react开发相关库](./react/reactLibs.md)
@@ -154,3 +157,4 @@ embed标签
 ## interview Q & A
 - [jsList](./interview/js.md)
 - [htmlList](./interview/html.md)
+- [vue](./interview/vue.md)

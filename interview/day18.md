@@ -74,3 +74,127 @@ https://zhuanlan.zhihu.com/p/76023663
 ### 解决ajax请求被缓存的方法
 - 在服务端加 header(“Cache-Control: no-cache, must-revalidate”);
 - 在 Ajax 的 URL 参数后加上 “?fresh=” + Math.random()
+
+### useContext的第二个参数
+通过特定的位运算，可以避免子组件重复渲染。
+https://zhuanlan.zhihu.com/p/51073183
+
+### 获得滚动距离
+document.body.scrollTop在chrome存在兼容问题，可以使用
+```js
+window.pageYOffset
+window.scrollY
+document.documentElement.scrollTop
+```
+### chrome是多进程结构
+包含Broeser进程，第三方插件进程，还有渲染进程
+https://juejin.im/post/5a6547d0f265da3e283a1df7
+https://juejin.im/post/5cd9854b5188252035420a13
+https://www.zhihu.com/question/368712837
+
+### 发布订阅模式
+```js
+class EventEmitter {
+	constructor() {
+		this._events = new Map()
+		this._maxEventListener = 10
+	}
+	addEventListener(event, fn) {
+		if (this._events.get(event)) {
+			this._events.get(event).push(fn)
+		} else {
+			this._events.set(event, [fn])
+		}
+	}
+}
+```
+
+### object.create和new的区别
+```js
+class A {
+  constructor() {
+    this.name = 'A'
+  }
+  log() {
+    console.log('A')
+  }
+}
+
+const nA = new A()
+const cA = Object.create(A)
+const cA2 = Object.create(A.prototype)
+```
+```js
+const isObject = t => typeof t === 'object' && t !== null
+const isFunction = f => typeof f === 'function'
+function myNew(super, args) {
+	let result = Object.create(super.prototype)
+	// construcror
+	const returnVal = super.call(result, args)
+	if (isFunction(returnVal) || isObject(returnVal)) {
+		return returnVal
+	}
+	return result
+}
+```
+注意构造函数super如果有显式返回值，而且函数值是函数或对象时，new会优先返回它。
+
+### Map
+对比Object
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map
+Map默认不包含任何键
+键的类型可以是任意值
+Map中的key是有序的
+Map的大小可以由size属性获取
+Map可以直接使用for of
+性能在频繁增删键值对的场景下表现更好。
+
+### undefined可以修改
+undefined 在 ES5 中已经是全局对象的一个只读（read-only）属性了，它不能被重写。但是在局部作用域中，还是可以被重写的。
+void 0 === 0.._ === undfined
+
+### css3动画
+https://juejin.im/post/5cdd178ee51d456e811d279b#comment
+```js
+addEventListener("webkitAnimationEnd",  (e)=>{ });
+```
+
+### 使用MutationObserver实现microtask
+MutationObserver可以用来实现microtask
+（它属于microtask，优先级小于Promise，
+一般是Promise不支持时才会这样做）
+它是HTML5中的新特性，作用是：监听一个DOM变动，
+当DOM对象树发生任何变动时，Mutation Observer会得到通知
+像以前的Vue源码中就是利用它来模拟nextTick的，
+具体原理是，创建一个TextNode并监听内容变化，
+然后要nextTick的时候去改一下这个节点的文本内容
+
+```js
+var counter = 1
+var observer = new MutationObserver(nextTickHandler)
+var textNode = document.createTextNode(String(counter))
+
+observer.observe(textNode, {
+    characterData: true
+})
+timerFunc = () => {
+    counter = (counter + 1) % 2
+    textNode.data = String(counter)
+}
+
+```
+https://juejin.im/post/5a6547d0f265da3e283a1df7#heading-26
+
+### getComputedStyle
+getComputedStyle会获取当前元素所有最终使用的CSS属性值，window.和document.defaultView.等价...
+
+
+getComputedStyle会引起回流，因为它需要获取祖先节点的一些信息进行计算（譬如宽高等），所以用的时候慎用，回流会引起性能问题。然后合适的话会将话题引导回流，重绘，浏览器渲染原理等等。当然也可以列举一些其它会引发回流的操作，如offsetXXX，scrollXXX，clientXXX，currentStyle等等
+
+### composite
+浏览器渲染的图层一般包含两大类：普通图层以及复合图层
+首先，普通文档流内可以理解为一个复合图层（这里称为默认复合层，里面不管添加多少元素，其实都是在同一个复合图层中）
+其次，absolute布局（fixed也一样），虽然可以脱离普通文档流，但它仍然属于默认复合层。
+然后，可以通过硬件加速的方式，声明一个新的复合图层，它会单独分配资源
+（当然也会脱离普通文档流，这样一来，不管这个复合图层中怎么变化，也不会影响默认复合层里的回流重绘）
+可以简单理解下：GPU中，各个复合图层是单独绘制的，所以互不影响，这也是为什么某些场景硬件加速效果一级棒

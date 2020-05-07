@@ -131,6 +131,7 @@ const createStore = function (plan, initState) {
     listeners.push(listener);
   }
 
+// dispatch函数
   function changeState(action) {
     /*请按照我的计划修改 state*/  
     state = plan(state, action);
