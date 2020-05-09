@@ -8,7 +8,21 @@ https://github.com/camsong/blog/issues/9
 
 
 ## 什么是函数柯里化？实现一个柯里化函数
-
+```js
+const curry = (fn: (...args: any[]) => any): function | void {
+  return (..args) => {
+    return args.length >= fn.length ? fn.apply(this, args) : curry(fn.bind(this, ...args))
+  }
+}
+```
+充分利用箭头函数的实现
+```js
+const currying = fn =>
+    judge = (...args) =>
+        args.length >= fn.length
+            ? fn(...args)
+            : (...arg) => judge(...args, ...arg)
+```
 
 
 ## virtual Dom？

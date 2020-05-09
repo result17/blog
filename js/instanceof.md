@@ -30,3 +30,25 @@ console.log(Function instanceof Function);
 console.log(Function instanceof Object);
 ```
 尝试能否答对？
+
+### myInstanceOf
+```js
+const myInstanceOf = (l, r) => {
+  if (L === null) return
+  l = l.getPrototypeof(l)
+  r = r === null ? null : r.prototype
+  while (true) {
+    if (l === null) return false
+    if (l === r) return true
+    l = l.getPrtototypeof(l)
+  }
+}
+```
+
+### 对象转原始值
+对象转原始类型，会调用内置的[ToPrimitive]函数，对于该函数而言，其逻辑如下：
+
+如果Symbol.toPrimitive()方法，优先调用再返回
+调用valueOf()，如果转换为原始类型，则返回
+调用toString()，如果转换为原始类型，则返回
+如果都没有返回原始类型，会报错

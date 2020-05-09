@@ -19,7 +19,6 @@ todo(JS相关):
 proxy使用（immer）0%
 web worker 0%
 web计时（window.performance对象）0%
-函数柯里化 0%
 私有变量实现 0%
 内存回收及内存泄漏 0%
 todo（css）：
