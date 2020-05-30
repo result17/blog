@@ -68,6 +68,10 @@ embed标签
 - [throttle](./js/throttle.md)
 ## 剑指offer
 - [数组中重复的数字](./offer/problem3.md)
+## go
+` [a tour of go](./go/aTourOfGo.md)
+## sql
+- [Binary Tree Nodes](./sql/binaryTreeNodes.md)
 ## leetcode
 - [最大子序和](./leetcode/53MaximumSubarray.md)
 - [二叉树的前序遍历](./leetcode/144BinaryTreePreorderTraversal.md)
