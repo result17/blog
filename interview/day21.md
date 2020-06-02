@@ -20,3 +20,16 @@ var j = 1 && 2 || 3;       //2
 <!-- 错误写法，不应该加/ -->
 <input />
 ```
+https://zhuanlan.zhihu.com/p/26725189
+div包裹图片多余像素问题
+```css
+img {
+  max-width: 100%;
+  max-height: 100%;
+  vertical-align: middle;
+}
+```
+
+### hsts
+![img](https://github.com/result17/blog/blob/master/imgs/http2https.png?raw=true)
+![img](https://github.com/result17/blog/blob/master/imgs/hsts.png?raw=true)

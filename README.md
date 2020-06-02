@@ -66,6 +66,7 @@ embed标签
 - [instanceOf](./js/instanceof.md)
 - [debounce](./js/debounce.md)
 - [throttle](./js/throttle.md)
+- [bind](./js/bind.md)
 ## 剑指offer
 - [数组中重复的数字](./offer/problem3.md)
 ## go
@@ -101,6 +102,7 @@ embed标签
 - [142. Linked List Cycle II](./leetcode/142LinkedListCycleII.md)
 - [287. Find the Duplicate Number](./leetcode/287FindtheDuplicateNumber.md)
 - [7. Reverse Integer](./leetcode/7ReverseInteger.md)
+- [300. Longest Increasing Subsequence](./leetcide/300LongestIncreasingSubsquence.md)
 ## react
 - [the note of reactjs-interview-questions](./react/reactjs-interview-questions.md)
 - [react开发相关库](./react/reactLibs.md)
