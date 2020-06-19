@@ -354,9 +354,17 @@ datalist 规定输入域的选项列表，通过 option 创建！
 
 output 元素用于不同类型的输出！
 HTML output 标签表示计算或用户操作的结果。
-## disabled 和 readonly 的区别？
+### disabled 和 readonly 的区别？
 disabled 指当 input 元素加载时禁用此元素。input 内容不会随着表单提交。
      
 readonly 规定输入字段为只读。input 内容会随着表单提交。
 
 无论设置 readonly 还是 disabled，通过 js 脚本都能更改 input 的 value。
+
+### 纯html进行表单检验
+验证属性: required
+元素: textarea, select, input (text, password, checkbox, radio, file, datetime,datetime-local, date, month, time, week, number, email, url, search, 和 tel 类型)
+验证属性: min, max
+元素: input (datetime, datetime-local, date, month, time, week, number, 和 range 类型)
+验证属性: pattern
+元素: input (text, password, email, url, search, 和 tel 类型)

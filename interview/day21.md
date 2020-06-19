@@ -33,3 +33,61 @@ img {
 ### hsts
 ![img](https://github.com/result17/blog/blob/master/imgs/http2https.png?raw=true)
 ![img](https://github.com/result17/blog/blob/master/imgs/hsts.png?raw=true)
+
+### localstorage sessionstorage cookie
+
+### 题目
+```js
+function Foo() {
+    getName = function () { alert (1); };
+    return this;
+}
+Foo.getName = function () { alert (2);};
+Foo.prototype.getName = function () { alert (3);};
+var getName = function () { alert (4);};
+function getName() { alert (5);}
+
+//请写出以下输出结果：
+Foo.getName();
+getName();
+Foo().getName();
+getName();
+new Foo.getName();
+new Foo().getName();
+new new Foo().getName();
+```
+```js
+// my answer
+// 2
+// 4 // 函数先于变量提升，但随后变量更改了getName指向
+// 1
+// 1
+// 不会
+// .操作符先于new 操作符
+```
+https://www.jianshu.com/p/ca68783d0a82
+
+### new的模拟
+```js
+const createInstance = (constuctor, ...args) {
+  const instance = object.create(constuctor.prototype)
+  constuctor.call(instance, ...args)
+  return instance
+}
+```
+### js精度
+https://www.cnblogs.com/MuYunyun/p/9739951.html
+
+### js字典序
+```js
+string.localeCompate
+```
+
+### node eventloop best posts
+https://blog.insiderattack.net/event-loop-and-the-big-picture-nodejs-event-loop-part-1-1cb67a182810
+
+### node concurrency error handler
+https://zhuanlan.zhihu.com/p/62210238
+
+### a regex to remove src & href attribute
+https://github.com/airuikun/Weekly-FE-Interview/issues/24

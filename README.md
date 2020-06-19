@@ -62,6 +62,7 @@ embed标签
 - [匹配汉字的正则表达式](./js/hanzi.md)
 - [vue3是如何写ts?](./js/vue3.md)
 - [react中的extend](./js/extendInReact.md)
+- [古怪的循环写法](./js/forWhile.md)
 ## handwirte
 - [instanceOf](./js/instanceof.md)
 - [debounce](./js/debounce.md)
@@ -115,6 +116,7 @@ embed标签
 - [TLS协议](./network/tls.md)
 - [DNS协议](./network/dns.md)
 - [常见易混淆网络名词](./network/words.md)
+- [hupu新回复分析](./network/hupuNewReply.md)
 ## node
 - [node的事件循环](./node/eventloop.md)
 ## css
@@ -147,6 +149,7 @@ embed标签
 - [python笔记](./read/pythonNote.md)
 - [taiko-web-code-note](./read/taiko-web-code-note.md)
 - [cpp笔记](./read/cppNote.md)
+- [vue2 diff算法](./read/vue2Read.md)
 ## others
 - [从乱码到base64](./others/from-error-code-to-base64.md)
 - [牛顿法求平方根](./others/newTownSqrt.md)

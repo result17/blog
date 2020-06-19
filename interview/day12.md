@@ -1,7 +1,10 @@
 ### 三栏布局
-
+<!--  https://www.jianshu.com/p/81ef7e7094e8 -->
+全部都要float: left;
 圣杯布局：container（父容器）padding: 0 200px;
 left ,right => postion: relative;
+left => right: 200px;
+right => left: 200px;
 left => marigin-left: -100%
 right => margin-left: -200px;
 

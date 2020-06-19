@@ -1,6 +1,7 @@
 ## vim
 : 命令模式
 %s 为搜索替换， g为全局
+:wq 保存退出
 ```c
 %s/匹配内容/替换内容g
 ```
@@ -13,3 +14,8 @@ sudo apt-get update; sudo apt-get upgrade
 ```shell
 lsa_release -a
 ```
+## EOF
+linux ctrl + d
+window ctrl + z
+
+std::cln.clear()刷新流
