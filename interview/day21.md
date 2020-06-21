@@ -91,3 +91,30 @@ https://zhuanlan.zhihu.com/p/62210238
 
 ### a regex to remove src & href attribute
 https://github.com/airuikun/Weekly-FE-Interview/issues/24
+
+### will-change
+通过此css属性告诉浏览器此元素很快会发生变换，从而启动GPU加快此图层渲染？。但后遗症有会影响后面postion: fixed的元素。
+
+### getDerivedStateFromProps effect
+https://tech.youzan.com/getderivedstatefromprops/
+
+### dns prefectch
+https://www.chromium.org/developers/design-documents/dns-prefetching
+https://github.com/barretlee/performance-column/issues/3
+
+### diffence between 301 and 302
+301会被缓存
+302不会
+
+301 seo会捉取重定向的网站B，并将网址保存为b
+302 会捉取B网站内容，但网址会保存为A
+
+### chrome developer tool tips
+https://coolshell.cn/articles/17634.html
+
+### v8 asm
+https://zhuanlan.zhihu.com/p/134647506
+https://zhuanlan.zhihu.com/p/54465194
+
+### 将异步和promise玩出新花样的文章
+https://www.blackglory.me/async-constructor/

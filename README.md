@@ -63,6 +63,7 @@ embed标签
 - [vue3是如何写ts?](./js/vue3.md)
 - [react中的extend](./js/extendInReact.md)
 - [古怪的循环写法](./js/forWhile.md)
+- [Promise.allSettled](./js/allSettled.md)
 ## handwirte
 - [instanceOf](./js/instanceof.md)
 - [debounce](./js/debounce.md)
@@ -103,7 +104,8 @@ embed标签
 - [142. Linked List Cycle II](./leetcode/142LinkedListCycleII.md)
 - [287. Find the Duplicate Number](./leetcode/287FindtheDuplicateNumber.md)
 - [7. Reverse Integer](./leetcode/7ReverseInteger.md)
-- [300. Longest Increasing Subsequence](./leetcide/300LongestIncreasingSubsquence.md)
+- [300. Longest Increasing Subsequence](./leetcode/300LongestIncreasingSubsquence.md)
+- [53. Maximum Subarray](./leetcode/53MaximumSubarray.md)
 ## react
 - [the note of reactjs-interview-questions](./react/reactjs-interview-questions.md)
 - [react开发相关库](./react/reactLibs.md)
