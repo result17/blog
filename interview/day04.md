@@ -1,5 +1,3 @@
-##
-
 ## DNS能用TCP实现吗？
 晕，我还一直以为是只能用TCP协议实现。
 https://www.zhihu.com/question/310145373

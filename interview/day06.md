@@ -11,7 +11,7 @@ https://juejin.im/post/5dce5a7cf265da0be53e9ec4
 ### v8gc
 https://juejin.im/post/5e6afc58e51d452715157434
 ### https原理
-https://juejin.im/post/5e4bab31f265da5740641983
+https://github.com/LinDaiDai/niubility-coding-js/blob/master/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/HTTPS%E9%9D%A2%E8%AF%95%E9%97%AE%E7%AD%94.md
 ### webpack配置的resolve有哪些功能？
 举例：
 - alias  配置项通过别名来把原导入路径映射成一个新的导入路径
@@ -67,7 +67,7 @@ module.exports = {
   },
 };
 ```
-webpack有一个vendor.\[hash\].js管理chunk和文件的对应关系，如果不蛇者runtimeChunk的话，每一个模块变动都会使vendor这文件改变，设置这个就是为了缓存此文件，单独打包。
+webpack有一个vendor.\[hash\].js管理chunk和文件的对应关系，如果不设置runtimeChunk的话，每一个模块变动都会使vendor这文件改变，设置这个就是为了缓存此文件，单独打包。
 https://developers.google.com/web/fundamentals/performance/webpack/use-long-term-caching
 https://webpack.js.org/configuration/optimization/#optimizationruntimechunk
 ### sourceMap

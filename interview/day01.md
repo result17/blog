@@ -88,7 +88,7 @@ CSRF是 CROSS-SITE REQUEST FORGERY，中文是跨域请求伪造。
 危害是：第三方网站可以冒充用户进行操作。
 原理是：通过浏览器会自动携带cookie。第三方网站伪造用户去请求（请求自动携带cookie）被攻击网站，被攻击网站误以为第三方网站为用户，从而进行攻击。
 防止CSRF有多种手段：
-1. 首先肯定不能在cookies中储存用户明文额密码。
+1. 首先肯定不能在cookie中储存用户明文额密码。
 2. 在chrome51版本后，可以在响应头中设置
 ```js
 Set-Cookie: __Host-session=123; path=/; Secure; HttpOnly; SameSite=Lax

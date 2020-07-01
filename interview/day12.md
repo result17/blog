@@ -5,14 +5,14 @@
 left ,right => postion: relative;
 left => right: 200px;
 right => left: 200px;
-left => marigin-left: -100%
+left => margin-left: -100%
 right => margin-left: -200px;
 
 双飞翼布局：html反直觉 .middle-container {
   marigin: 0 200px;
 }
 
-left => marigin-left: -100%
+left => margin-left: -100%
 right => margin-left: -200px;
 
 ### @-css属性
@@ -131,15 +131,15 @@ http://www.alloyteam.com/2015/08/nodejs-cluster-tutorial/
 ### js阻塞css和dom的渲染根本原因
 浏览器是多进程程序，其执行js进程跟GUI渲染进程互斥 
 
-### react生命周期
-挂载阶段
+### react生命周期（class组件）
+挂载阶段  render阶段
 constructor
-getDerivedStateFromProps
+static getDerivedStateFromProps
 render
 componentDidMount
 
-更新阶段
-getDerivedStateFromProps
+更新阶段  commit阶段
+static getDerivedStateFromProps
 shouldComponentUpdate(nextProps, nextState): boolean
 render
 getSnapshotBeforeUpdate
@@ -147,6 +147,10 @@ componentDidUpdate
 
 卸载阶段
 componentWillUnmount
+
+错误处理
+static getDerivedStateFromError
+componentDidCatch
 
 ### react请求放在哪一个生命周期
 React的异步请求到底应该放在哪个生命周期里,有人认为在componentWillMount中可以提前进行异步请求,避免白屏,其实这个观点是有问题的.
@@ -178,5 +182,3 @@ class A {
   }
 }
 ```
-
-### es5
