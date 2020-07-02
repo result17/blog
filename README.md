@@ -106,6 +106,7 @@ embed标签
 - [7. Reverse Integer](./leetcode/7ReverseInteger.md)
 - [300. Longest Increasing Subsequence](./leetcode/300LongestIncreasingSubsquence.md)
 - [53. Maximum Subarray](./leetcode/53MaximumSubarray.md)
+- [974. Subarray Sums Divisible by K](./leetcode/974subarraySumsDivisibleByK.md)
 ## react
 - [the note of reactjs-interview-questions](./react/reactjs-interview-questions.md)
 - [react开发相关库](./react/reactLibs.md)
