@@ -29,8 +29,7 @@ function Component(props) {
   this.props = props
 }
 ```
-题外话：在react中你调用super()没有传入props, 你依然
-能够在render函数或其他地方中访问this.propsReact在调用构造函数后也把props赋值给实例。
+题外话：在react中你调用super()没有传入props, 你依然能够在render函数或其他地方中访问this.props。React在调用构造函数后也把props赋值给实例。
 ```js
   // React 内部
 const instance = new YourComponent(props);
@@ -39,6 +38,7 @@ instance.props = props;
 这是因为，React要服务更多的类抽象，如ClojureScript，CoffeeScript，ES6，Fable，Scala.js，TypeScript。所以才会这样设计。
 但写super(props)是有必要的，因为React内部是在构造函数结束后才为实例，添加props属性。
 所以在构造函数是没有办法调用this.props
+
 ```js
 // React 內部
 class Component {

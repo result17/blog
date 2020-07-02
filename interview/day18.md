@@ -87,7 +87,7 @@ window.scrollY
 document.documentElement.scrollTop
 ```
 ### chrome是多进程结构
-包含Broeser进程，第三方插件进程，还有渲染进程
+包含Browser进程，第三方插件进程，还有渲染进程
 https://juejin.im/post/5a6547d0f265da3e283a1df7
 https://juejin.im/post/5cd9854b5188252035420a13
 https://www.zhihu.com/question/368712837

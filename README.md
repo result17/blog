@@ -52,7 +52,6 @@ embed标签
 - [token和csrf](./js/token.md)
 - [react中为什么要写super(props)](./js/superProps.md)
 - [内存回收及内存泄漏](./js/memoryControl.md)
-- [class中的this](./js/thisInClass.md)
 - [static关键字](./js/static.md)
 - [generator](./js/generator.md)
 - [instanceof](./js/instanceof.md)
@@ -109,9 +108,6 @@ embed标签
 - [974. Subarray Sums Divisible by K](./leetcode/974subarraySumsDivisibleByK.md)
 ## react
 - [the note of reactjs-interview-questions](./react/reactjs-interview-questions.md)
-- [react开发相关库](./react/reactLibs.md)
-- [react生命周期](./react/liftCycle.md)
-- [hooks的原理](./react/hook.md)
 ## network
 - [通用首部](./network/conmonHeader.md)
 - [前端路由实现原理](./network/fontEndRouter.md)

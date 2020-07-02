@@ -156,6 +156,14 @@ function myInstanceOf(left, right) {
   }
 }
 ```
+### myObjectCreate
+```js
+function myObjectCreate(proto) {
+  function F() {}
+  F.prototype = proto
+  return new F()
+}
+```
 ### this
 指向当前函数的执行环境，在函数调用时去确定
 ### XSS
