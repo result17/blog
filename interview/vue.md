@@ -492,5 +492,49 @@ mounted(){
 // 子组件触发 mounted 钩子函数 ...
 // 父组件监听到 mounted 钩子函数 ...     
 ```
+### mvvm
+mvvm是Model-View-ModelView的简写。此概念最先由微软提出的，将view和model的直接关系分离，同一由viewmodel同一管理。也即开发者只需在model层进行数据更改，viewmodel就能用高性能的方法更新view层（对于浏览器来说，就是无需开发者手动更新dom，只要通过model的更改产生新的v-dom，viewmodel自动diff新旧两个v-dom，得到最小更改，自动去对dom进行更新，而view层的更改也能通过viewmodel进行更新model）
 
-### 给已经存在的对象
+### vue生命周期
+就我自己单步调试vue来说
+- beforeCreate Vue.prtotype._init方法（此步要先进行config合并）创建vue实例，初始化生命周期，初始化Render，初始化Events (还不能访问state)
+- created 此步劫持data中的数据（浅层）对于其的getter和setter（defineReactive 设置成响应式），都有相应的watcher。这部主要是初始化data/props。还有处理injection（data和props之前），处理provider（data和props之后）
+- beforeMounted 主要是编译阶段，对template中的字符串，获取v指令，子节点，子组件生成v-dom（普通的js对象，里面属性由tag el childeren等），AST，然后构建一个render函数，然后根据AST生成编译指令。
+- Mounted 根据编译指令，生成对应的dom，然后进行原生的dom操作替换，移除原生的dom。
+- beforeUpdate 只要是生成新的v-dom tree（不会再进行编译的过程），然后调用diff，生成AST。
+- updated 应该根据AST进行dom操作。
+- beforeDestroy destroyed 因该接触dom绑定和移除事件监听吧。
+### vue路由懒加载
+https://router.vuejs.org/zh/guide/advanced/lazy-loading.html#%E6%8A%8A%E7%BB%84%E4%BB%B6%E6%8C%89%E7%BB%84%E5%88%86%E5%9D%97
+此Api和React中的suspense一样是是基于import()语法的，使用函数创建作用域来保存此Promise。在需要组件才执行此函数，动态加载组件即可。
+### 自定义指令
+```js
+// 注册一个全局自定义指令 `v-focus`
+Vue.directive('focus', {
+  // 当被绑定的元素插入到 DOM 中时……
+  inserted: function (el) {
+    // 聚焦元素
+    el.focus()
+  }
+})
+```
+指令有其hook函数
+bind inserted update compoentUpdated unbind
+### vue的双向绑定原理是什么？
+vue.js 是采用数据劫持结合发布者-订阅者模式的方式，通过 Object.defineProperty()来劫持各个属性的 setter，getter，在数据变动时发布消息给订阅者，触发相应的监听回调。
+
+具体步骤： 第一步：需要 observe 的数据对象进行递归遍历，包括子属性对象的属性，都加上 setter 和 getter 这样的话，给这个对象的某个值赋值，就会触发 setter，那么就能监听到了数据变化
+
+第二步：compile 解析模板指令，将模板中的变量替换成数据，然后初始化渲染页面视图，并将每个指令对应的节点绑定更新函数，添加监听数据的订阅者，一旦数据有变动，收到通知，更新视图
+
+第三步：Watcher 订阅者是 Observer 和 Compile 之间通信的桥梁，主要做的事情是:
+
+在自身实例化时往属性订阅器(dep)里面添加自己
+自身必须有一个 update()方法
+待属性变动 dep.notice()通知时，能调用自身的 update() 方法，并触发 Compile 中绑定的回调，则功成身退。
+第四步：MVVM 作为数据绑定的入口，整合 Observer、Compile 和 Watcher 三者，通过 Observer 来监听自己的 model 数据变化，通过 Compile 来解析编译模板指令，最终利用 Watcher 搭起 Observer 和 Compile 之间的通信桥梁，达到数据变化 -> 视图更新；视图交互变化(input) -> 数据 model 变更的双向绑定效果。
+
+### vuex原理
+vuex 仅仅是作为 vue 的一个插件而存在，不像 Redux,MobX 等库可以应用于所有框架，vuex 只能使用在 vue 上，很大的程度是因为其高度依赖于 vue 的 computed 依赖检测系统以及其插件系统，
+
+vuex 整体思想诞生于 flux,可其的实现方式完完全全的使用了 vue 自身的响应式设计，依赖监听、依赖收集都属于 vue 对对象 Property set get 方法的代理劫持。最后一句话结束 vuex 工作原理，vuex 中的 store 本质就是没有 template 的隐藏着的 vue 组件；

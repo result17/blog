@@ -1,14 +1,18 @@
 ### 三栏布局
 <!--  https://www.jianshu.com/p/81ef7e7094e8 -->
 全部都要float: left;
-圣杯布局：container（父容器）padding: 0 200px;
+圣杯布局：
+container（父容器）padding: 0 200px;
+center => width: 100%;
 left ,right => postion: relative;
 left => right: 200px;
 right => left: 200px;
 left => margin-left: -100%
 right => margin-left: -200px;
 
-双飞翼布局：html反直觉 .middle-container {
+双飞翼布局：html反直觉
+全部都要float: left;
+.middle-container {
   marigin: 0 200px;
 }
 

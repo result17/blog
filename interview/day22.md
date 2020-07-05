@@ -39,6 +39,7 @@ https://tech.meituan.com/2017/04/27/vuex-code-analysis.html
 ### HMR原理
 https://juejin.im/post/5df36ffd518825124d6c1765
 HMR优点在于可以保存应用状态，提高开发效率
+HMR英文为hot module replacement
 -  通过 websocket 建立起 浏览器端 和 服务器端 之间的通信
 #### 服务端
 - compiler实例：监听本地文件的变化、文件改变自动编译、编译输出

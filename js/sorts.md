@@ -161,6 +161,7 @@ function merge_sort(ary) {
       }
     }
   }
+  
   function sort(array, start, end) {
     if (start >= end) return
     const mid = start + Math.floor((end - start) / 2)
@@ -168,6 +169,7 @@ function merge_sort(ary) {
     sort(array, mid + 1, end)
     merge(array, start, mid, end)
   }
+
   const aux = new Array(ary.length).fill(0)
   sort(ary, 0, ary.length - 1)
 }

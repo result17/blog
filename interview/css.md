@@ -457,3 +457,64 @@ margin 合并的3种场景：
     • 设置垂直方向的 padding；
     • 里面添加内联元素（直接 Space 键空格是没用的）；
     • 设置 height 或者 min-height。
+### line-height
+line-height指的是一行字高度，实际上是上一行基线到下一行基线的距离。
+
+### 文字折行
+- overflow-wrap 通用换行控制
+  - 是否保留单词
+- word-break 针对多字节文本文字
+  - 中文句子也是单词
+- white-space 空白处是否换行
+### 单行文本溢出显示省略号啊
+```css
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: no-wrap;
+```
+### 多行文本溢出显示省略号
+```css
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 3;
+-webkit-box-orient: vertical;
+```
+### display:none visibility: hidden opacity: 0
+display: none;会将此元素溢出render tree，但还在dom存在，会发生回流 reflow，性能消耗较大。
+visibility: hidden; 元素还在render tree，还占据着原来的位置
+
+### 什么是响应式设计？响应式设计的基本原理是什么？如何兼容低版本的 IE？
+为多个屏幕大小不一的客户端，提供一个可以自适应的样式。基本原理是基于css3的媒体查询，为符合添加的客户端加载响应的
+对于低版本的 IE，可采用 JS 获取屏幕宽度，然后通过监听 window.onresize 方法来实现兼容
+
+### 浮动
+浮动的框可以向左或者向右移动，知道它的外边缘碰到包含块或者另一浮动框为止，浮动元素脱离文档流（单独成一个图层），漂浮在文档流上。
+清除浮动方法：
+父级 div 定义伪类
+```css
+.clearfloat:after {
+  display: block;
+  clear: both;
+  content: "";
+  visibility: hidden;
+  height: 0;
+}
+
+.clearfloat {
+  zoom: 1;
+}
+```
+### 什么是 FOUC(Flash of Unstyled Content)？ 如何来避免 FOUC？
+当使用@import引入css会导致页面内容出现闪烁现象
+- 产生原因 当样式表晚于结构性html加载时，加载此样式表，浏览器会暂停html的渲染。等待此样式表哦被下载和解析后，再继续html渲染，期间会出现花屏现象。
+- 不要使用@import方法引入css，在header中通过link标签引入css。
+
+### 怎么让 Chrome 支持小于 12px 的文字？
+```css
+.shrink {
+  -webkit-transform: scale(0.8);
+  -o-transform: scale(1);
+  display: inline-block;
+}
+```

@@ -1,0 +1,40 @@
+- 网络部分
+  - 减少http请求数
+    - 使用雪碧图
+    - base64图片
+    - webpack对js和css文件进行合并
+    - 或者使用不同域名加载资源
+  - 减少DNS查找
+    - 在meta便签中开启dns预解析
+  - 使用CDN对内容进行分发
+  - 尽量避免重定向
+- http缓存
+  - 服务器使用cache-control（Expires）启用强缓存，当有跨域请求可以使用access-control-max-age，在此期间不再发预检请求。
+  - 使用ETags（搭配If-None-Match）或者Last-Modified（搭配If-Modified-Since）启用协商缓存。
+  - 使用外链的方式引入 JS 和 CSS（缓存）
+- 内容部分
+  - 按需加载组件
+  - 预加载组件
+  - 虚拟列表解决长列表渲染问题
+  - 尽量少用 iframe
+  - 压缩js和css代码
+  - 服务器启用压缩格式如gzip
+- css
+  - 高效的css选择器（class和id，css选择器是从右到左匹配）
+  - 少使用内联样式
+  - 使用link标签（并行）而不是使用@import串行
+  - css位置尽量靠前（css虽然不会阻塞html解析，但会阻塞html渲染）
+  - 避免使用滤镜
+- js
+  - script标签放在body后面（script可以添加async，这个会使得script标签异步加载和尽快解析） https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/script
+  - 离线操作dom
+- 图片部分
+  - 尽量使用svg，简单图片可以使用css进行替换。
+  - 用小的可缓存的 favicon.ico
+- cookie
+  - 尽量减少cookie体积
+  - 静态资源房补不同域下，这样请求就不会请求cookie
+- 服务器
+  - 开启Gzip
+  - 避免图片src属性为空
+  - 使用CDN（内容分发网络）
