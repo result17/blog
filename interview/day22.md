@@ -198,3 +198,24 @@ https://juejin.im/post/5d70aee4f265da03f12e7ab2
 ### 协商缓存
 - last-Modefied配合If-Modified-Since
 - ETag配合If-None-Match
+### 跨域限制
+Cookie、LocalStorage 和 IndexDB 无法读取
+DOM 无法获得
+ajax请求无法返回（被浏览器劫持）
+### to read
+https://developer.aliyun.com/article/592876
+https://developer.aliyun.com/article/592878
+https://v8.dev/blog/high-performance-cpp-gc
+https://v8.dev/blog/concurrent-marking
+https://segmentfault.com/a/1190000004556040
+https://zhuanlan.zhihu.com/p/26027085
+https://zhuanlan.zhihu.com/p/47407398
+### tree-shaking
+es6 module特点
+- 只能作为模块顶层语句出现
+- import的模块名只能是字符串常量
+- import binding是immutable的
+
+所谓静态分析就是不执行代码，从字面量上对代码进行分析，ES6之前的模块化，比如我们可以动态require一个模块，只有执行后才知道引用的什么模块，这个就不能通过静态分析去做优化。
+
+这是 ES6 modules 在设计时的一个重要考量，也是为什么没有直接采用 CommonJS，正是基于这个基础上，才使得 tree-shaking 成为可能，这也是为什么 rollup 和 webpack 2 都要用 ES6 module syntax 才能 tree-shaking。

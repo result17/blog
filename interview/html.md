@@ -165,7 +165,8 @@ sessionStorage 的数据在浏览器关闭后自动删除;
 页面所访问共享。
 - localStorage也是html5提供一种浏览器本地存储的方法，它一般也能够存储 5M 或者更大的数据。它和 sessionStorage 
 不同的是，除非手动删除它，否则它不会失效，并且 localStorage 也只能被同源页面所访问共享。
-## iframe有哪些七二点
+https://developer.mozilla.org/zh-CN/docs/Web/API/Window/sessionStorage
+## iframe有哪些缺点
 iframe 元素会创建包含另外一个文档的内联框架（即行内框架）。
 主要缺点有：
 （1） iframe 会阻塞主页面的 onload 事件。window 的 onload 事件需要在所有 iframe 加载完毕后（包含里面的元素）才会触发。在 Safari 和 Chrome 里，通过 JavaScript 动态设置 iframe 的 src 可以避免这种阻塞情况。

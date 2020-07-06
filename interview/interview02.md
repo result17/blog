@@ -6,26 +6,29 @@
 此题与leetcode 1143最长子序列非常相似，字串是子序列一个特列。此类问题都应该由dp解决，dp为两个字符串（从0开始）矩阵。空间复杂度可以优化为字符串中较小的一个。返回一个substr，还应注意substr为左闭右开的区间。
 ```js
 function lcs(s1, s2) {
-  let dp = new Array(s1.length + 1).fill(new Array(s2.length + 1).fill(0))
-  let start = 0, end = 0, len = 0
+  let dp = new Array(s1.length + 1).fill(0).map(it =>new Array(s2.length + 1).fill(0))
+  let len = 0
+  let start = 0, end = 0
   for (let i = 0; i < s1.length; ++i) {
     for (let j = 0; j < s2.length; ++j) {
-      if (s1[i] == s2[j]) {
+      if (s1[i] === s2[j]) {
         dp[i + 1][j + 1] = dp[i][j] + 1
-        if (dp[i + 1][j + 1] > len) {
+        // len = Math.max(len, dp[i + 1][j + 1])
+        if (len < dp[i + 1][j + 1]) {
           len = dp[i + 1][j + 1]
           end = i + 1
-          start = end - len
-        } else {
-          dp[i + 1][j + 1] = 0
+          start = end -len
         }
+      } else {
+        dp[i + 1][j + 1] = 0
       }
     }
   }
-  return s1.substr(start, end)
+  return s1.slice(start, end)
 }
 
 console.log(lcs('abcdefghil', 'xyabcdefghkjgah'))
+lcs('我喜欢听音乐和看电影', '你知不知道我喜欢听音乐')
 ```
 
 ## 倒水问题
