@@ -1,3 +1,6 @@
+# 前缀和解法
+- 前缀和老套路map[0] = 1
+- 除了节点的左右节点及其后代节点此前缀和不能再被方法，所以应该在当前map[prefixSum]--
 ```cpp
 class Solution {
 public:
@@ -23,4 +26,27 @@ private:
         m[ps]--;
     }
 };
+```
+```java
+class Solution {
+    Map<Integer, Integer> map;
+    int res = 0;
+    public int pathSum(TreeNode root, int targetSum) {
+        Map<Integer, Integer> map = new HashMap<>();
+        this.map = map;
+//         prefix sum tradition
+        this.map.put(0, 1);
+        pathTraverse(root, 0, targetSum);
+        return res;
+    }
+    public void pathTraverse(TreeNode root, int prefixSum, int targetSum) {
+        if (root == null) return;
+        prefixSum += root.val;
+        res += map.getOrDefault(prefixSum - targetSum, 0);
+        map.merge(prefixSum, 1, Integer::sum);
+        pathTraverse(root.left, prefixSum, targetSum);
+        pathTraverse(root.right, prefixSum, targetSum);
+        map.merge(prefixSum, -1, Integer::sum);
+    }
+}
 ```
